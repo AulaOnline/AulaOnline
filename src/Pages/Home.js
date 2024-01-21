@@ -21,7 +21,7 @@ function Home() {
     return (
         <Grid container>
             {/* Navbar */}
-            <Navbar name={'Login'} />
+            <Navbar name={'Login'} cor='017BF7'/>
 
             {/* Grid Container com imagem de fundo */}
             <Grid
@@ -83,7 +83,7 @@ function Home() {
             </Grid>
 
             {/* Footer */}
-            <Footer />
+            <Footer cor ={'#017BF7'}/>
         </Grid>
     );
 }

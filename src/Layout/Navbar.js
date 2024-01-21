@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const Navbar = ({ name }) => {
+const Navbar = ({ name, cor }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -19,7 +19,7 @@ const Navbar = ({ name }) => {
 
   return (
     <AppBar position="sticky">
-      <Toolbar sx={{ paddingRight: '5px', bgcolor: '#2C664D' }}>
+      <Toolbar sx={{ paddingRight: '5px', bgcolor:cor}}>
         <IconButton
           size="large"
           edge="start"
