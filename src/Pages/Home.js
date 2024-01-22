@@ -83,7 +83,7 @@ function Home() {
             </Grid>
 
             {/* Footer */}
-            <Footer />
+            <Footer cor={'blue'} />
         </Grid>
     );
 }
