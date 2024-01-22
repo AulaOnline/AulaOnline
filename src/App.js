@@ -11,7 +11,7 @@ function App() {
       <Box>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/Perfil" element={<Widgets/>}/>
+          <Route path="/Perfil" element={<Widgets/>} />
         </Routes>
       </Box>
     </Router>
