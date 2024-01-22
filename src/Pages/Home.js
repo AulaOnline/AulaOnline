@@ -21,7 +21,7 @@ function Home() {
     return (
         <Grid container>
             {/* Navbar */}
-            <Navbar name={'Login'} />
+            <Navbar name={'Aula Online'} />
 
             {/* Grid Container com imagem de fundo */}
             <Grid

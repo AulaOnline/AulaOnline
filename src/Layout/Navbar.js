@@ -41,7 +41,10 @@ const Navbar = ({ name }) => {
           <MenuItem component={Link} to="/Chatbot" onClick={handleClose}>
             Chatbot
           </MenuItem>
-          <MenuItem component={Link} to="/copa" onClick={handleClose}>
+          <MenuItem component={Link} to="/Perfil" onClick={handleClose}>
+            Meu Perfil
+          </MenuItem>
+          <MenuItem component={Link} to="/Sobre" onClick={handleClose}>
             Sobre
           </MenuItem>
         </Menu>
@@ -52,7 +55,9 @@ const Navbar = ({ name }) => {
           <ButtonGroup variant="text" aria-label="text button group" sx={{ padding: '20px' }}>
             <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }}>Login</Button>
             <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }}>Chatbot</Button>
+            <Button style={{ color: 'white' ,  borderRight: 'transparent', paddingRight: '8px'}}>Meu Perfil</Button>
             <Button style={{ color: 'white' }}>Sobre</Button>
+
           </ButtonGroup>
         )}
         <AccountCircleIcon fontSize="large" style={{ marginLeft: 'auto', color: 'black' }} />
