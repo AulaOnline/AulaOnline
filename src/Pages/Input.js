@@ -11,7 +11,6 @@ function Input() {
             <Navbar cor = {'black'}/>
             <Section>
             <Grid container sx={{height: "calc(100vh - 94px)", display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color:'#BFCEDE', paddingBottom:'150px'}}>
-
                 <Typography sx={{fontFamily:'Inter,sans-serif', fontWeight: 800}} variant="h1" component="h1">
                     Otimizando O aprendizado
                 </Typography>

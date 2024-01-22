@@ -21,7 +21,7 @@ function Home() {
     return (
         <Grid container>
             {/* Navbar */}
-            <Navbar name={'Aula Online'} />
+            <Navbar name={'Aula Online'} cor={'#017BF7'}/>
 
             {/* Grid Container com imagem de fundo */}
             <Grid
@@ -83,7 +83,7 @@ function Home() {
             </Grid>
 
             {/* Footer */}
-            <Footer cor={'blue'} />
+            <Footer cor={'#017BF7'} />
         </Grid>
     );
 }
