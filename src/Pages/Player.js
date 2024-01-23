@@ -1,11 +1,12 @@
 import React from 'react'
-import navbar from "../Layout/Navbar";
-import Navbar from "../Layout/Navbar";
-import Footer from "../Layout/Footer";
+import navbar from "../Layout/components/Navbar";
+import Navbar from "../Layout/components/Navbar";
+import Footer from "../Layout/components/Footer";
 import {Button, Grid} from "@mui/material";
 import {styled} from "styled-components";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import EditorWrapper from "../Layout/features/Notepad/Notepad";
 
 const StyledSection = styled.section`
   background-color: #101824;
@@ -13,17 +14,20 @@ const StyledSection = styled.section`
 `;
 function VideoAndChat(){
     return (
-        <Grid container spacing={2} sx={{ border: '1px solid red', height: 'calc(71vh)', paddingLeft: '40px', paddingTop: '50px', paddingRight: '0px' }}>
+        <Grid container spacing={0} sx={{ border: '1px solid red', height: 'calc(90vh)', paddingLeft: '40px', paddingTop: '50px', paddingBottom: '0px' }}>
             <Grid item xs={12} md={8.3} sx={{ border: '1px solid #000', display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center' }}>
                 <Button variant="contained">Video</Button>
             </Grid>
             <Grid item xs={12} md={3.3} sx={{ border: '1px solid #000', display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center', marginLeft: '30px' }}>
                 <Button variant="contained">ChatBot</Button>
             </Grid>
+            <Button variant="contained" sx={{ height: '5%', width: '10%', marginRight: '30px', backgroundColor: '#0CA789'}}>Gerar Questionario</Button>
+            <Button variant="contained" sx={{ height: '5%', width: '10%', backgroundColor: '#9a8c1c' }}>Gerar Resumo</Button>
         </Grid>
     )
 }
-function GenerativeButons(){
+/*
+function GenerativeButtons(){
     return(
         <Grid container spacing={2} sx={{ border: '1px solid red', height: 'calc(30vh)', paddingLeft: '40px', paddingRight: '0px' }}>
             <Grid item xs={12} md={12} sx={{ border: '1px solid #000', display: 'flex' }}>
@@ -32,14 +36,25 @@ function GenerativeButons(){
             </Grid>
         </Grid>
     )
+}*/
+
+function Notepad(){
+    return (
+        <Grid container spacing={0} sx={{border:'1px solid green', marginTop: '20px'}}>
+            <Grid item xs={12} md={8} sx={{ border: '1px solid #000', display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center' }}>
+                <Button variant="contained">Video</Button>
+            </Grid>
+        </Grid>
+    )
 }
+
 
 function Player() {
     return (
         <StyledSection>
             <Navbar/>
             <VideoAndChat/>
-            <GenerativeButons/>
+            <Notepad/>
             <Footer cor={'#017BF7'}/>
         </StyledSection>
     );

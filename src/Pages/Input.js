@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../Layout/Navbar";
-import Footer from "../Layout/Footer"
+import Navbar from "../Layout/components/Navbar";
+import Footer from "../Layout/components/Footer"
 import {Grid, Typography, TextField} from '@mui/material'
 import styled from "styled-components";
 import '@fontsource/inter';
