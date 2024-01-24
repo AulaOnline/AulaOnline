@@ -16,6 +16,6 @@ function Quintal() {
     );
 }
 
-/* NAO MEXA AQUI SOB NENHUMA HIPOTESE, RISCO DE MORTE*/
+/* NAO MEXA AQUI SOB NENHUMA HIPOTESE, RISCO DE MORTE q peste é isso*/
 
 export default Quintal;
