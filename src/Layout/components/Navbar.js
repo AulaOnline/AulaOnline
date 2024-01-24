@@ -41,7 +41,7 @@ const Navbar = ({ name, cor }) => {
           <MenuItem component={Link} to="/Chatbot" onClick={handleClose}>
             Chatbot
           </MenuItem>
-          <MenuItem component={Link} to="/Perfil" onClick={handleClose}>
+          <MenuItem component={Link} to="/MeuPerfil" onClick={handleClose}>
             Meu Perfil
           </MenuItem>
           <MenuItem component={Link} to="/Sobre" onClick={handleClose}>

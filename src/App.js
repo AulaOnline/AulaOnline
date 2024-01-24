@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Home from './Pages/Home';
 import Input from "./Pages/Input";
-import Widgets from "./Pages/Widgets";
+import MeuPerfil from "./Pages/Widgets/MeuPerfil";
 import Player from "./Pages/Player";
 import Test from "./Pages/Test";
 import Quintal from "./Pages/quintal";
+import Anotacoes from './Pages/Widgets/Anotacoes';
+import QuestionariosFinalizados from './Pages/Widgets/QuestionariosFinalizados';
 
 function App() {
   return (
@@ -16,9 +18,15 @@ function App() {
           <Route path="/" element={<Home/>} />
             <Route path="/Input" element={<Input/>}/>
             <Route path="/Player" element={<Player/>}/>
-            <Route path="/Perfil" element={<Widgets/>}/>
             <Route path="/Test" element={<Test/>}/>
             <Route path="/quintal" element={<Quintal/>}/>
+
+            {/*ROTAS TELA WIDGETS E COMPLEMENTARES */}
+            <Route path="/MeuPerfil" element={<MeuPerfil/>}/>
+            <Route path="/MeuPerfil/Anotacoes" element={<Anotacoes/>}/>
+            <Route path="/MeuPerfil/Questionarios" element={<QuestionariosFinalizados/>}/>
+
+
         </Routes>
       </Box>
     </Router>
