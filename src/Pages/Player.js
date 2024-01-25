@@ -7,7 +7,7 @@ import {styled} from "styled-components";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import EditorWrapper from "../Layout/features/Notepad/Notepad";
-
+import Editor from "../Layout/features/Notepad/Notepad";
 const StyledSection = styled.section`
   background-color: #101824;
   background-size: 3000px 3000px;
@@ -40,9 +40,9 @@ function GenerativeButtons(){
 
 function Notepad(){
     return (
-        <Grid container spacing={0} sx={{border:'1px solid green', marginTop: '20px'}}>
-            <Grid item xs={12} md={8} sx={{ border: '1px solid #000', display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center' }}>
-                <Button variant="contained">Video</Button>
+        <Grid container sx={{border:'1px solid green', marginTop: '20px'}}>
+            <Grid item xs={12} md={8} sx={{ border: '1px solid #000', height: "calc(65vh)", marginLeft:'40px'}}>
+                <Editor/>
             </Grid>
         </Grid>
     )

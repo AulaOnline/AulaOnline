@@ -1,7 +1,25 @@
 .contentEditable {
-    height:400px;
-    width: 50%;
-    padding-left:15px;
-    border: 1px solid #fff;
-    background-color: beige;
+    height: 90%;
+    width: 100%;
+    background-color: #D8E0DC;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color-scheme: light dark;
+    font-synthesis: none;
+    text-rendering: OptimizeLegibility;
+
 }
+
+.aulaOnline-Editor-H1 {
+    font-size: 34px;
+    font-synthesis: initial;
+    font-family: 'Avenir', sans-serif; /* Substitua 'Avenir' pelo caminho ou URL da fonte se necessário */
+    font-weight: bold;
+}
+
+.aulaOnline-Editor-H2 {
+    font-size: 24px;
+}
+
+
