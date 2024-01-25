@@ -1,31 +1,39 @@
 import * as React from 'react';
 import Navbar from "../../Layout/components/Navbar";
-import { Grid, Paper, Typography, Button } from "@mui/material";
-import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
-import MobileStepper from '@mui/material/MobileStepper';
+import { Grid, Paper, Typography, Button, Box } from "@mui/material";
+import { MobileStepper } from "@mui/material";
+import { useTheme} from '@mui/material/styles';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import RadioGroupQuestionario from '../../Layout/components/RadioGroupQuestionario';
 
-//gera as questões baseadas na API do GPT
-//loop pra trocar as questões no stepper, enviando o index do array de objetos
-//radio group pras alternativas seguindo uma logica parecida
-const steps = [
-    {
-        label: 'Questão "X"',
-        description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
-    },
-    {
-        label: 'Questão "X"',
-        description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
-    },
-    {
-        label: 'Questão "X"',
-        description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
-    },
-];
+//gera as questões baseadas na API do GPT;
+//react stepper pra gerar os questionarios;
+//radio group pras alternativas seguindo uma logica parecida.
 
 export default function Questionario() {
+    const steps = [
+        {
+            label: 'Questão 1',
+            description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
+        },
+        {
+            label: 'Questão 2',
+            description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
+        },
+        {
+            label: 'Questão 3',
+            description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
+        },
+        {
+            label: 'Questão 4',
+            description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
+        },
+        {
+            label: 'Questão 5',
+            description: `Texto da questão importada da IA, onde 'X' vai ser o numero da questão.`,
+        },
+    ];
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
     const maxSteps = steps.length;
@@ -38,12 +46,14 @@ export default function Questionario() {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    
     return (
         <Grid container>
             <Navbar />
             <Grid container sx={{ display: "flex", height: "calc(100vh - 64px)", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                 <Paper elevation={5} sx={{ bgcolor: "grey", height: "80%", width: "50%" }}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>                        <Paper
+                    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>                        
+                    <Paper
                         square
                         elevation={0}
                         sx={{
@@ -58,7 +68,10 @@ export default function Questionario() {
                         {/* aprender a mexer no flexbox pra ficar bonito KK */}
                         <Typography sx={{ textAlign: 'center', width: '100%' }}>{steps[activeStep].label}</Typography>                    </Paper>
                         <Box sx={{ height: '100%', maxWidth: '100%', p: 2 }}>
-                            <Typography sx={{ textAlign: 'center'}}>{steps[activeStep].description}</Typography> 
+                            <Box sx={{ height: '30%', maxWidth: '100%', p: 2 }}>
+                                <Typography sx={{ textAlign: 'center', fontSize: '1.5rem'}}>{steps[activeStep].description}</Typography> 
+                            </Box>
+                            <RadioGroupQuestionario />
                         </Box>
                         <MobileStepper
                             variant="text"
