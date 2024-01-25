@@ -9,6 +9,7 @@ import Test from "./Pages/Test";
 import Quintal from "./Pages/quintal";
 import Anotacoes from './Pages/Widgets/Anotacoes';
 import QuestionariosFinalizados from './Pages/Widgets/QuestionariosFinalizados';
+import Questionario from './Pages/Questionario/Questionario';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/MeuPerfil/Anotacoes" element={<Anotacoes/>}/>
             <Route path="/MeuPerfil/Questionarios" element={<QuestionariosFinalizados/>}/>
 
+            <Route path="/questionario" element={<Questionario/>}/>
 
         </Routes>
       </Box>
