@@ -63,7 +63,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-function PersistentDrawerLeft({ open, handleDrawerClose }) {
+function PersistentDrawerLeft({ open, handleDrawerClose, cor }) {
   const theme = useTheme();
 
   return (
@@ -74,6 +74,7 @@ function PersistentDrawerLeft({ open, handleDrawerClose }) {
         '& .MuiDrawer-paper': {
           width: drawerWidth,
           boxSizing: 'border-box',
+          bgcolor : cor
         },
        
       }}
@@ -176,7 +177,7 @@ const Navbar = ({ name, cor }) => {
       </StyledAppBar>
 
       {/* Renderiza o conteúdo do Sidebar quando o MenuIcon é clicado */}
-      {drawerOpen && <PersistentDrawerLeft open={drawerOpen} handleDrawerClose={handleDrawerClose} />}
+      {drawerOpen && <PersistentDrawerLeft open={drawerOpen} handleDrawerClose={handleDrawerClose} cor= {cor} />}
     </div>
   );
 };

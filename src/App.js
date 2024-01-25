@@ -3,13 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Home from './Pages/Home';
 import Input from "./Pages/Input";
-import MeuPerfil from "./Pages/Widgets/MeuPerfil";
+import MeuPerfil from "./Pages/MeuPerfil";
 import Player from "./Pages/Player";
 import Test from "./Pages/Test";
 import Quintal from "./Pages/quintal";
-import Anotacoes from './Pages/Widgets/Anotacoes';
-import QuestionariosFinalizados from './Pages/Widgets/QuestionariosFinalizados';
-import Questionario from './Pages/Questionario/Questionario';
+
 
 function App() {
   return (
@@ -24,8 +22,7 @@ function App() {
 
             {/*ROTAS TELA WIDGETS E COMPLEMENTARES */}
             <Route path="/MeuPerfil" element={<MeuPerfil/>}/>
-            <Route path="/MeuPerfil/Anotacoes" element={<Anotacoes/>}/>
-            <Route path="/MeuPerfil/Questionarios" element={<QuestionariosFinalizados/>}/>
+            
 
             <Route path="/questionario" element={<Questionario/>}/>
 
