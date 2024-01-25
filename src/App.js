@@ -24,6 +24,7 @@ function App() {
             <Route path="/MeuPerfil" element={<MeuPerfil/>}/>
             
 
+            <Route path="/questionario" element={<Questionario/>}/>
 
         </Routes>
       </Box>
