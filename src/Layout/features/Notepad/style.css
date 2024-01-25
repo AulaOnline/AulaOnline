@@ -1,7 +1,26 @@
 .contentEditable {
-    height:400px;
-    width: 50%;
-    padding-left:15px;
-    border: 1px solid #fff;
-    background-color: beige;
+    height: 90%;
+    width: 100%;
+    background-color: #D8E0DC;
+    padding-top: 15px;
+    padding-left: 40px;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color-scheme: light dark;
+    font-synthesis: none;
 }
+
+.Editor-H1 {
+    font-size: 34px;
+}
+
+.Editor-H2 {
+    font-size: 30px;
+}
+
+.Editor-H3 {
+    font-size: 24px;
+}
+
+
