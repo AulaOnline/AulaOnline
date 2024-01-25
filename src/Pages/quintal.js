@@ -6,7 +6,6 @@ const StyledSection = styled.section`
   background-size: 3000px 3000px;
 `;
 
-
 function Quintal() {
     return (
         <StyledSection>
