@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const Navbar = ({ name }) => {
+const Navbar = ({ name, cor }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -19,7 +19,7 @@ const Navbar = ({ name }) => {
 
   return (
     <AppBar position="sticky">
-      <Toolbar sx={{ paddingRight: '5px', bgcolor: '#2C664D' }}>
+      <Toolbar sx={{ paddingRight: '5px', bgcolor:cor}}>
         <IconButton
           size="large"
           edge="start"
@@ -41,7 +41,10 @@ const Navbar = ({ name }) => {
           <MenuItem component={Link} to="/Chatbot" onClick={handleClose}>
             Chatbot
           </MenuItem>
-          <MenuItem component={Link} to="/copa" onClick={handleClose}>
+          <MenuItem component={Link} to="/MeuPerfil" onClick={handleClose}>
+            Meu Perfil
+          </MenuItem>
+          <MenuItem component={Link} to="/Sobre" onClick={handleClose}>
             Sobre
           </MenuItem>
         </Menu>
@@ -52,7 +55,9 @@ const Navbar = ({ name }) => {
           <ButtonGroup variant="text" aria-label="text button group" sx={{ padding: '20px' }}>
             <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }}>Login</Button>
             <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }}>Chatbot</Button>
+            <Button style={{ color: 'white' ,  borderRight: 'transparent', paddingRight: '8px'}}>Meu Perfil</Button>
             <Button style={{ color: 'white' }}>Sobre</Button>
+
           </ButtonGroup>
         )}
         <AccountCircleIcon fontSize="large" style={{ marginLeft: 'auto', color: 'black' }} />

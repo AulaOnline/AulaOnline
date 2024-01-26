@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, Typography, TextField, Button, useMediaQuery } from "@mui/material";
-import Navbar from "../Layout/Navbar";
-import Footer from "../Layout/Footer";
+import Navbar from "../Layout/components/Navbar";
+import Footer from "../Layout/components/Footer";
 import MailLockOutlinedIcon from '@mui/icons-material/MailLockOutlined';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
@@ -21,7 +21,7 @@ function Home() {
     return (
         <Grid container>
             {/* Navbar */}
-            <Navbar name={'Login'} />
+            <Navbar name={'Aula Online'} cor={'#017BF7'}/>
 
             {/* Grid Container com imagem de fundo */}
             <Grid
@@ -83,7 +83,7 @@ function Home() {
             </Grid>
 
             {/* Footer */}
-            <Footer />
+            <Footer cor={'#017BF7'} />
         </Grid>
     );
 }
