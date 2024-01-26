@@ -50,8 +50,8 @@ export default function Questionario() {
     return (
         <Grid container>
             <Navbar />
-            <Grid container sx={{ display: "flex", height: "calc(100vh - 64px)", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
-                <Paper elevation={5} sx={{ bgcolor: "grey", height: "80%", width: "50%" }}>
+            <Grid container sx={{ bgcolor: "#565683", display: "flex", height: "calc(100vh - 64px)", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+                <Paper elevation={5} sx={{ borderRadius: 6, bgcolor: "white", height: "80%", width: "50%" }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>                        
                     <Paper
                         square
@@ -62,17 +62,21 @@ export default function Questionario() {
                             height: 50,
                             pl: 2,
                             bgcolor: 'background.default',
+                            borderRadius: 12
                         }}
                     >
                         {/* alterar porcentagem pra caber as alternativas */}
                         {/* aprender a mexer no flexbox pra ficar bonito KK */}
-                        <Typography sx={{ textAlign: 'center', width: '100%' }}>{steps[activeStep].label}</Typography>                    </Paper>
+                        <Typography sx={{ borderRadius: 12, bgcolor: "royalblue", fontSize: '2rem', textAlign: 'center', width: '100%' }}>{steps[activeStep].label}</Typography>                    </Paper>
                         <Box sx={{ height: '100%', maxWidth: '100%', p: 2 }}>
                             <Box sx={{ height: '30%', maxWidth: '100%', p: 2 }}>
-                                <Typography sx={{ textAlign: 'center', fontSize: '1.5rem'}}>{steps[activeStep].description}</Typography> 
+                                <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.5rem'}}>{steps[activeStep].description}</Typography> 
                             </Box>
-                            <RadioGroupQuestionario />
+                            <Box sx={{ height: '70%', maxWidth: '100%', justifyContent: "center", p: 2 }}>
+                                <RadioGroupQuestionario />
+                            </Box>
                         </Box>
+
                         <MobileStepper
                             variant="text"
                             steps={maxSteps}
@@ -80,11 +84,13 @@ export default function Questionario() {
                             activeStep={activeStep}
                             nextButton={
                                 <Button
-                                    size="small"
+                                    sx={{borderRadius: 16}}
+                                    bgcolor="royalblue"
+                                    size="medium"
                                     onClick={handleNext}
                                     disabled={activeStep === maxSteps - 1}
                                 >
-                                    Next
+                                    
                                     {theme.direction === 'rtl' ? (
                                         <KeyboardArrowLeft />
                                     ) : (
@@ -93,16 +99,23 @@ export default function Questionario() {
                                 </Button>
                             }
                             backButton={
-                                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                                <Button
+                                    sx={{borderRadius: 16}}
+                                    bgcolor="royalblue"
+                                    size="medium"
+                                    onClick={handleNext}
+                                    disabled={activeStep === maxSteps - 1}
+                                >
                                     {theme.direction === 'rtl' ? (
                                         <KeyboardArrowRight />
                                     ) : (
                                         <KeyboardArrowLeft />
                                     )}
-                                    Back
+                                    
                                 </Button>
                             }
                         />
+                        
                     </Box>
                 </Paper>
             </Grid>
