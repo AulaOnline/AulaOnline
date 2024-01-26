@@ -7,20 +7,19 @@ import './VideoCard.css';
 
 const VideoCard = ({ title, imageUrl, duration }) => {
   return (
-    <Card>
+    <Card className="card">
       <CardMedia
         component="img"
         alt={title}
         height="140"
         image= {imageUrl}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {/*title*/}
-          Título
+      <CardContent className="card-content">
+        <Typography gutterBottom variant="h5" component="div" className="card-title">
+          {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Duração restante: {/*duration*/} 10 minutos
+        <Typography variant="body2" color="text.secondary" className="card-duration">
+          Duração restante: {duration} minutos
         </Typography>
       </CardContent>
     </Card>

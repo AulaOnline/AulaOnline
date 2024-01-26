@@ -11,7 +11,7 @@
     "@lexical/rich-text": "^0.12.6",
     "@lexical/selection": "^0.12.6",
     "@mui/icons-material": "^5.15.5",
-    "@mui/material": "^5.15.5",
+    "@mui/material": "^5.15.6",
     "@radix-ui/react-toolbar": "^1.0.4",
     "@syncfusion/ej2-react-richtexteditor": "^24.1.46",
     "@testing-library/jest-dom": "^5.17.0",
