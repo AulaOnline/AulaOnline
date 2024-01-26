@@ -1,11 +1,9 @@
 
-
 .card {
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   height: 100%;
   background-color: #f0f0f0; 
-  padding: 10px;
 }
 
 .card img {
@@ -30,3 +28,9 @@
 .card-duration {
   color: #555;
 }
+.divi{
+  background-color:#017BF7 ;
+  height: 8px;
+  width: 4px;
+}
+
