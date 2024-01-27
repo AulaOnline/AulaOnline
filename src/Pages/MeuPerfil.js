@@ -10,7 +10,7 @@ function MeuPerfil() {
       <NavbarWidgets name="Aula Online" cor="#017BF7" />
       <div className="content">
         {/*  cards de vídeo */}
-        <VideoCard title="Título do Vídeo 1" imageUrl="/caminho/para/imagem1.jpg" duration={10} />
+        <VideoCard title="Título do Vídeo 1" imageUrl="../assets/capa_videocard.jpg" duration={10} />
         <Divider/>
         <VideoCard title="Título do Vídeo 2" imageUrl="/caminho/para/imagem2.jpg" duration={15} />
         <Divider/>
