@@ -1,87 +1,105 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import { Typography } from "@mui/material";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-
-const BpIcon = styled('span')(({ theme }) => ({
-  borderRadius: '50%',
-  width: 16,
-  height: 16,
-  boxShadow:
-    theme.palette.mode === 'dark'
-      ? '0 0 0 1px rgb(16 22 26 / 40%)'
-      : 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
-  backgroundColor: theme.palette.mode === 'dark' ? '#394b59' : '#f5f8fa',
-  backgroundImage:
-    theme.palette.mode === 'dark'
-      ? 'linear-gradient(180deg,hsla(0,0%,100%,.05),hsla(0,0%,100%,0))'
-      : 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-  '.Mui-focusVisible &': {
-    outline: '2px auto rgba(19,124,189,.6)',
-    outlineOffset: 2,
-  },
-  'input:hover ~ &': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#30404d' : '#ebf1f5',
-  },
-  'input:disabled ~ &': {
-    boxShadow: 'none',
-    background:
-      theme.palette.mode === 'dark' ? 'rgba(57,75,89,.5)' : 'rgba(206,217,224,.5)',
-  },
-}));
-
-const BpCheckedIcon = styled(BpIcon)({
-  backgroundColor: '#137cbd',
-  backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
-  '&::before': {
-    display: 'block',
-    width: 16,
-    height: 16,
-    backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
-    content: '""',
-  },
-  'input:hover ~ &': {
-    backgroundColor: '#106ba3',
-  },
-});
-
-// Inspired by blueprintjs
-function BpRadio(props) {
-  return (
-    <Radio
-      disableRipple
-      color="default"
-      checkedIcon={<BpCheckedIcon />}
-      icon={<BpIcon />}
-      {...props}
-    />
-  );
-}
+import { Typography, Button, Grid, Box } from "@mui/material";
 
 export default function RadioGroupQuestionario() {
+  const [selectedOption, setSelectedOption] = React.useState(null);
+
+  const handleOptionClick = (option) => {
+    if (selectedOption === option) {
+      setSelectedOption(null);
+    } else {
+      setSelectedOption(option);
+    }
+  };
+
   return (
-    <FormControl>
-      <FormLabel id="demo-customized-radios"></FormLabel>
-      <RadioGroup
-        defaultValue="A. Alternativa"
-        aria-labelledby="demo-customized-radios"
-        name="customized-radios"
-      >
-        <FormControlLabel value="A. Alternativa" control={<BpRadio />} label={<Typography sx={{ fontSize: '1.2rem' }}>A. Alternativa</Typography>} />
-        <FormControlLabel value="B. Alternativa" control={<BpRadio />} label={<Typography sx={{ fontSize: '1.2rem' }}>B. Alternativa</Typography>} />
-        <FormControlLabel value="C. Alternativa" control={<BpRadio />} label={<Typography sx={{ fontSize: '1.2rem' }}>C. Alternativa</Typography>} />
-        <FormControlLabel value="D. Alternativa" control={<BpRadio />} label={<Typography sx={{ fontSize: '1.2rem' }}>D. Alternativa</Typography>} />
-        {/* <FormControlLabel 
-          value="disabled"
-          disabled
-          control={<BpRadio />}
-          label="(Disabled option)"
-        />*/}
-      </RadioGroup>
-    </FormControl>
+    <Grid container direction="column" spacing={2}>
+      <Typography variant="h6" gutterBottom>
+      </Typography>
+      <Grid item container alignItems="center" spacing={1}>
+        <Grid item xs={1}>
+          <Button
+            variant={selectedOption === 'A' ? 'contained' : 'outlined'}
+            onClick={() => handleOptionClick('A')}
+            fullWidth
+            sx={{
+              borderRadius: 3,
+              color: selectedOption === 'A' ? 'white' : '#017BF7',
+              backgroundColor: selectedOption === 'A' ? '#017BF7' : 'transparent',
+            }}
+          >
+            A
+          </Button>
+        </Grid>
+        <Grid item xs={10}>
+          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
+            <Typography sx={{ width: '100%', textAlign: 'left' }}>Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid item container alignItems="center" spacing={1}>
+        <Grid item xs={1}>
+          <Button
+            variant={selectedOption === 'B' ? 'contained' : 'outlined'}
+            onClick={() => handleOptionClick('B')}
+            fullWidth
+            sx={{
+              borderRadius: 3,
+              color: selectedOption === 'B' ? 'white' : '#017BF7',
+              backgroundColor: selectedOption === 'B' ? '#017BF7' : 'transparent',
+            }}
+          >
+            B
+          </Button>
+        </Grid>
+        <Grid item xs={10}>
+          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
+            <Typography sx={{ width: '100%', textAlign: 'left' }}> Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid item container alignItems="center" spacing={1}>
+        <Grid item xs={1}>
+          <Button
+            variant={selectedOption === 'C' ? 'contained' : 'outlined'}
+            onClick={() => handleOptionClick('C')}
+            fullWidth
+            sx={{
+              borderRadius: 3,
+              color: selectedOption === 'C' ? 'white' : '#017BF7',
+              backgroundColor: selectedOption === 'C' ? '#017BF7' : 'transparent',
+            }}
+          >
+            C
+          </Button>
+        </Grid>
+        <Grid item xs={10}>
+          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
+            <Typography sx={{ width: '100%', textAlign: 'left' }}>  Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid item container alignItems="center" spacing={1}>
+        <Grid item xs={1}>
+          <Button
+            variant={selectedOption === 'D' ? 'contained' : 'outlined'}
+            onClick={() => handleOptionClick('D')}
+            fullWidth
+            sx={{
+              borderRadius: 3,
+              color: selectedOption === 'D' ? 'white' : '#017BF7',
+              backgroundColor: selectedOption === 'D' ? '#017BF7' : 'transparent',
+            }}
+          >
+            D
+          </Button>
+        </Grid>
+        <Grid item xs={10}>
+          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
+            <Typography sx={{ width: '100%', textAlign: 'left' }}>Alternativa</Typography>
+          </Box>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
