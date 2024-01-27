@@ -3,6 +3,7 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
+
 import {HeadingNode} from "@lexical/rich-text";
 import './style.css'
 
@@ -11,6 +12,7 @@ import {
     ListNode
 } from "@lexical/list";
 import ToolbarPlugin from "./Toolbar";
+import {ListPlugin} from "@lexical/react/LexicalListPlugin";
 
 const theme = {
     heading: {
@@ -41,5 +43,6 @@ export default function Editor() {
                 ErrorBoundary={LexicalErrorBoundary}
             />
             <HistoryPlugin />
+            <ListPlugin />
         </LexicalComposer>
     );}
