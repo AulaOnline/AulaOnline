@@ -7,7 +7,7 @@ import Footer from '../Layout/components/Footer';
 
 function MeuPerfil() {
   return (
-    <div className="main">
+    <Grid container className='main' sx={{ bgcolor: "#101824", display: "flex", height: "calc(100vh - 64px)" }}>
       <NavbarWidgets name="Aula Online" cor="#017BF7" />
 
       <div className="content" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px'}}>
@@ -46,9 +46,9 @@ function MeuPerfil() {
         </Box>      
       </div>
 
-      {/*<Grid><Footer style={{ color: '#017BF7', position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#f1f1f1', textAlign: 'center', padding: '10px' }}></Footer></Grid>*/}
+      <Grid><Footer cor={'#017BF7'} style={{ position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#f1f1f1', textAlign: 'center', padding: '10px' }}></Footer></Grid>
     
-    </div>
+    </Grid>
   );
 }
 
