@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, IconButton, Toolbar, Typography, Menu, MenuItem, Button, ButtonGroup, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Navbar = ({ name, cor }) => {
@@ -14,6 +14,13 @@ const Navbar = ({ name, cor }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const navigate = useNavigate()
+
+  const navigateTo = (rota) => {
+    navigate(`${rota}`)
+  }
+
 
   const isSmallScreen = useMediaQuery('(max-width: 420px)');
 
@@ -53,9 +60,9 @@ const Navbar = ({ name, cor }) => {
         </Typography>
         {!isSmallScreen && (
           <ButtonGroup variant="text" aria-label="text button group" sx={{ padding: '20px' }}>
-            <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }}>Login</Button>
-            <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }}>Chatbot</Button>
-            <Button style={{ color: 'white' ,  borderRight: 'transparent', paddingRight: '8px'}}>Meu Perfil</Button>
+            <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }} onClick={() => navigateTo('/')}>Login</Button>
+            <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }} onClick={() => navigateTo('/input')}>Chatbot</Button>
+            <Button style={{ color: 'white' ,  borderRight: 'transparent', paddingRight: '8px'}}onClick={() => navigateTo('/MeuPerfil')}>Meu Perfil</Button>
             <Button style={{ color: 'white' }}>Sobre</Button>
 
           </ButtonGroup>
