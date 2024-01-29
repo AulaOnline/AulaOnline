@@ -4,6 +4,8 @@ import Navbar from "../Layout/components/Navbar";
 import Footer from "../Layout/components/Footer";
 import MailLockOutlinedIcon from '@mui/icons-material/MailLockOutlined';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
+import CadastroDialog from '../components/CadastroDialog';
+import EsqueciMinhaSenha from '../components/EsqueciMinhaSenha';
 
 function Home() {
     const [email, setEmail] = useState('');
@@ -30,7 +32,7 @@ function Home() {
                     backgroundImage: `url('/planodefundologin.jpg')`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    height: "calc(100vh - 64px)",
+                    height: "calc(100vh - 125px)",
                     padding: "20px",
                 }}
             >
@@ -42,11 +44,11 @@ function Home() {
 
                 {/* Segundo Item (metade da largura) */}
                 <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                    <Typography variant="h3" gutterBottom sx={{ color: 'black' }}>
+                    <Typography variant="h4" gutterBottom sx={{ color: 'black' }}>
                         Bem-vindo!
                     </Typography>
 
-                    <Typography variant="h3" gutterBottom sx={{ color: 'black', paddingBottom: '30px' }}>
+                    <Typography variant="h4" gutterBottom sx={{ color: 'black', paddingBottom: '30px' }}>
                         Faça Login na sua Conta!
                     </Typography>
 
@@ -76,6 +78,10 @@ function Home() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    
+                    <CadastroDialog/>
+                    <EsqueciMinhaSenha/>
+                    
                     <Button variant="contained" color="primary" onClick={handleLogin} sx={{ bgcolor: '#0CA789', width: '25%' }}>
                         Entrar
                     </Button>
