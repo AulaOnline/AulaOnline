@@ -58,14 +58,14 @@ export default function Questionario() {
     return (
         <Grid container>
             <Navbar />
-            <Grid container sx={{ bgcolor: "#101824", display: "flex", height: "calc(100vh - 64px)", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+            <Grid container direction="column" xs='12' sx={{ bgcolor: "#101824", display: "flex", height: "calc(100vh - 64px)", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                 <Paper elevation={5} sx={{ borderRadius: 6, bgcolor: "#101818", height: "80%", width: "50%" }}>
                     <Grid container direction="column" alignItems="stretch" sx={{ height: '100%', alignItems: "center" }}>
                         <Grid item container justifyContent="center" sx={{ borderRadius: '32px 32px 0 0', bgcolor: "#017BF7", width: "100%" }}>
-                            <Typography sx={{ fontSize: '2rem', textAlign: 'center' }}>{steps[activeStep].label}</Typography>
+                            <Typography sx={{ fontSize: '2vw', textAlign: 'center' }}>{steps[activeStep].label}</Typography>
                         </Grid>
                         <Grid item container sx={{ bgcolor: "#D9D9D9", height: '25%', width: '100%', p: 2 }}>
-                            <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.4rem' }}>{steps[activeStep].description}</Typography>
+                            <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.4vw' }}>{steps[activeStep].description}</Typography>
                         </Grid>
                         <Grid item container sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2 }}>
                             <Grid container direction="column" spacing={3} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -77,6 +77,7 @@ export default function Questionario() {
                                                 onClick={() => handleOptionClick(option, activeStep)}
                                                 fullWidth
                                                 sx={{
+                                                    fontSize: '1vw',
                                                     borderRadius: 3,
                                                     color: selectedOption[activeStep] === option ? 'white' : '#017BF7',
                                                     backgroundColor: selectedOption[activeStep] === option ? '#017BF7' : 'transparent',
@@ -87,12 +88,8 @@ export default function Questionario() {
                                                 {option}
                                             </Button>
                                         </Grid>
-                                        <Grid item xs={11}>
-                                            <Grid container alignItems="center">
-                                                <Grid item xs={12}>
-                                                    <Typography sx={{ width: '100%', textAlign: 'left', bgcolor: '#D9D9D9', padding: 1, borderRadius: 3 }}>Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
-                                                </Grid>
-                                            </Grid>
+                                        <Grid item container alignItems={'center'} xs={11}>
+                                                    <Typography sx={{ fontSize: '1vw', width: '100%', textAlign: 'left', bgcolor: '#D9D9D9', padding: 1, borderRadius: 3 }}>Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
                                         </Grid>
                                     </Grid>
                                 ))}
