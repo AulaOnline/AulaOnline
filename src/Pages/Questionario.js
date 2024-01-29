@@ -58,20 +58,51 @@ export default function Questionario() {
     return (
         <Grid container>
             <Navbar />
-            <Grid container direction="column" xs='12' sx={{ bgcolor: "#101824", display: "flex", height: "calc(100vh - 64px)", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+            <Grid 
+            container 
+            direction="column" 
+            xs='12'
+            sx={{ 
+                bgcolor: "#101824", 
+                display: "flex", 
+                height: "calc(100vh - 64px)", 
+                justifyContent: "center", 
+                alignItems: "center", 
+                textAlign: "center" 
+                }}>
                 <Paper elevation={5} sx={{ borderRadius: 6, bgcolor: "#101818", height: "80%", width: "50%" }}>
-                    <Grid container direction="column" alignItems="stretch" sx={{ height: '100%', alignItems: "center" }}>
-                        <Grid item container justifyContent="center" sx={{ borderRadius: '32px 32px 0 0', bgcolor: "#017BF7", width: "100%" }}>
+                    <Grid container 
+                    xs= {'auto'}
+                    direction="column" 
+                    alignItems="stretch" 
+                    sx={{ 
+                        height: '100%', 
+                        alignItems: "center" 
+                        }}>
+                        <Grid item container 
+                        justifyContent="center" 
+                        sx={{ 
+                            borderRadius: '32px 32px 0 0', 
+                            bgcolor: "#017BF7", 
+                            width: "100%" 
+                            }}>
                             <Typography sx={{ fontSize: '2vw', textAlign: 'center' }}>{steps[activeStep].label}</Typography>
                         </Grid>
                         <Grid item container sx={{ bgcolor: "#D9D9D9", height: '25%', width: '100%', p: 2 }}>
                             <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.4vw' }}>{steps[activeStep].description}</Typography>
                         </Grid>
-                        <Grid item container sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2 }}>
-                            <Grid container direction="column" spacing={3} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Grid item container xs= 'auto' sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2 }}>
+                            <Grid container 
+                            direction="column" 
+                            spacing={3} 
+                            sx={{ 
+                                display: "flex", 
+                                justifyContent: "center", 
+                                alignItems: "center" 
+                                }}>
                                 {steps[activeStep].options.map((option, index) => (
                                     <Grid item container alignItems="center" spacing={3} key={option}>
-                                        <Grid item xs={1}>
+                                        <Grid item>
                                             <Button
                                                 variant={selectedOption[activeStep] === option ? 'contained' : 'outlined'}
                                                 onClick={() => handleOptionClick(option, activeStep)}
@@ -88,8 +119,24 @@ export default function Questionario() {
                                                 {option}
                                             </Button>
                                         </Grid>
-                                        <Grid item container alignItems={'center'} xs={11}>
-                                                    <Typography sx={{ fontSize: '1vw', width: '100%', textAlign: 'left', bgcolor: '#D9D9D9', padding: 1, borderRadius: 3 }}>Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
+                                        <Grid item container alignItems={'center'} xs={'auto'}>
+                                                    <Typography 
+                                                    sx={{ 
+                                                        fontSize: '1vw', 
+                                                        width: '100%', 
+                                                        textAlign: 'left', 
+                                                        bgcolor: '#D9D9D9', 
+                                                        padding: 1, 
+                                                        borderRadius: 3 
+                                                    }}
+                                                    //quebra de linha automatica pra evitar bug ???
+                                                    //style={{ 
+                                                    //    wordWrap: 'break-word', 
+                                                    //    overflowWrap: 'break-word' 
+                                                    // }}
+                                                    >
+                                                    Alternativa com linha maior de texto para fazer teste de flexbox  
+                                                    </Typography>
                                         </Grid>
                                     </Grid>
                                 ))}
