@@ -1,18 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Navbar from "../Layout/components/Navbar";
 import Footer from "../Layout/components/Footer";
-import {Button, Grid} from "@mui/material";
+import {Button, CircularProgress, Grid} from "@mui/material";
 import {styled} from "styled-components";
 import Editor from "../Layout/features/Notepad/Editor";
+import ReactPlayer from 'react-player/youtube';
+import {useLocation, useParams} from "react-router-dom";
+
 const StyledSection = styled.section`
   background-color: #101824;
   background-size: 3000px 3000px;
 `;
+
 function VideoAndChat(){
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const linkAula = queryParams.get('linkAula');
+
     return (
-        <Grid container sx={{ border: '1px solid red', height: 'calc(90vh)', paddingLeft: '40px', paddingTop: '50px', paddingBottom: '0px' }}>
-            <Grid item xs={12} md={8.3} sx={{ border: '1px solid #000', display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center' }}>
-                <Button variant="contained">Video</Button>
+        <Grid container sx={{height: 'calc(90vh)', paddingLeft: '40px', paddingTop: '50px', paddingBottom: '0px' }}>
+            <Grid item xs={12} md={8.3} sx={{display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center' }}>
+                    <ReactPlayer url={linkAula}
+                             width='100%'
+                             height='100%'
+                             controls={true}
+                />)
             </Grid>
             <Grid item xs={12} md={3.5} sx={{ height: "calc(60vh)", marginLeft:'20px'}}>
                 <Editor/>
@@ -23,23 +35,12 @@ function VideoAndChat(){
     )
 }
 
-function Notepad(){
-    return (
-        <Grid container sx={{border:'1px solid green', marginTop: '20px'}}>
-            <Grid item xs={12} md={8} sx={{height: "calc(60vh)", marginLeft:'40px'}}>
-
-            </Grid>
-        </Grid>
-    )
-}
-
 
 function Player() {
     return (
         <StyledSection>
             <Navbar/>
             <VideoAndChat/>
-            <Notepad/>
             <Footer cor={'#017BF7'}/>
         </StyledSection>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Layout/components/Navbar";
 import Footer from "../Layout/components/Footer"
-import {Grid, Typography, TextField} from '@mui/material'
+import {Grid, Typography, TextField, Button} from '@mui/material'
 import styled from "styled-components";
 import '@fontsource/inter';
 
@@ -11,12 +11,17 @@ function Input() {
             <Navbar cor = {'black'}/>
             <Section>
             <Grid container sx={{height: "calc(100vh - 94px)", display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color:'#BFCEDE', paddingBottom:'150px'}}>
-                <Typography sx={{fontFamily:'Inter,sans-serif', fontWeight: 800}} variant="h1" component="h1">
-                    Otimizando O aprendizado
-                </Typography>
-                <Typography sx={{paddingBottom:"70px", fontFamily:'Inter,sans-serif', fontWeight: 800, color:'#BFCEDE'}} variant="h1" component="h1">Ao Nível Máximo...</Typography>
-                <TextField sx={{width:'100vh', backgroundColor:'#BFCEDE', boxShadow:'0 2px 4px rgba(0, 0, 0, 0.1)'}}
-                           id="outlined-basic" label="Insira o link da sua aula" variant="filled" />
+                <Grid item md={9} sx={{marginTop:'11%', border: 'solid 1px red', alignItems:'center', justifyContent:'center'}}>
+                    <Typography sx={{fontFamily:'Inter,sans-serif', fontWeight: 800}} variant="h1" component="h1">
+                        Otimizando O aprendizado
+                    </Typography>
+                    <Typography sx={{paddingBottom:"70px", fontFamily:'Inter,sans-serif', fontWeight: 800, color:'#BFCEDE'}} variant="h1" component="h1">Ao Nível Máximo...</Typography>
+                    <Grid item sx={{display:'flex', alignItems:'row'}}>
+                        <TextField sx={{width:'100vh', backgroundColor:'#BFCEDE', boxShadow:'0 2px 4px rgba(0, 0, 0, 0.1)'}}
+                                   id="outlined-basic" label="Insira o link da sua aula" variant="filled" />
+                        <Button variant="contained" size={"large"} sx={{ width:'5%', borderRadius: '0px'}}>></Button>
+                    </Grid>
+                </Grid>
             </Grid>
             </Section>
             <Footer cor={'black'}/>
