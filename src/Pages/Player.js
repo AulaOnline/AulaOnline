@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Navbar from "../Layout/components/Navbar";
 import Footer from "../Layout/components/Footer";
-import {Button, CircularProgress, Grid} from "@mui/material";
+import {Button, Grid} from "@mui/material";
 import {styled} from "styled-components";
 import Editor from "../Layout/features/Notepad/Editor";
 import ReactPlayer from 'react-player/youtube';
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 const StyledSection = styled.section`
   background-color: #101824;
