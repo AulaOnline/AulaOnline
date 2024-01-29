@@ -13,10 +13,8 @@ export default function RadioGroupQuestionario() {
   };
 
   return (
-    <Grid container direction="column" spacing={2}>
-      <Typography variant="h6" gutterBottom>
-      </Typography>
-      <Grid item container alignItems="center" spacing={1}>
+    <Grid container direction="column" spacing={3} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Grid item container alignItems="center" spacing={3}>
         <Grid item xs={1}>
           <Button
             variant={selectedOption === 'A' ? 'contained' : 'outlined'}
@@ -26,15 +24,19 @@ export default function RadioGroupQuestionario() {
               borderRadius: 3,
               color: selectedOption === 'A' ? 'white' : '#017BF7',
               backgroundColor: selectedOption === 'A' ? '#017BF7' : 'transparent',
+              width: '100%',
+              height: '100%',
             }}
           >
             A
           </Button>
         </Grid>
-        <Grid item xs={10}>
-          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
-            <Typography sx={{ width: '100%', textAlign: 'left' }}>Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
-          </Box>
+        <Grid item xs={11}>
+          <Grid container alignItems="center">
+            <Grid item xs={12}>
+              <Typography sx={{ width: '100%', textAlign: 'left', bgcolor: '#D9D9D9', padding: 1, borderRadius: 3 }}>Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item container alignItems="center" spacing={1}>
@@ -47,15 +49,19 @@ export default function RadioGroupQuestionario() {
               borderRadius: 3,
               color: selectedOption === 'B' ? 'white' : '#017BF7',
               backgroundColor: selectedOption === 'B' ? '#017BF7' : 'transparent',
+              width: '100%',
+              height: '100%',
             }}
           >
             B
           </Button>
         </Grid>
-        <Grid item xs={10}>
-          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
-            <Typography sx={{ width: '100%', textAlign: 'left' }}> Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
-          </Box>
+        <Grid item xs={11}>
+          <Grid container alignItems="center">
+            <Grid item xs={12}>
+              <Typography sx={{ width: '100%', textAlign: 'left', bgcolor: '#D9D9D9', padding: 1, borderRadius: 3 }}>Alternativa com linha maior de texto para fazer teste de flexbox Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item container alignItems="center" spacing={1}>
@@ -68,15 +74,19 @@ export default function RadioGroupQuestionario() {
               borderRadius: 3,
               color: selectedOption === 'C' ? 'white' : '#017BF7',
               backgroundColor: selectedOption === 'C' ? '#017BF7' : 'transparent',
+              width: '100%',
+              height: '100%',
             }}
           >
             C
           </Button>
         </Grid>
-        <Grid item xs={10}>
-          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
-            <Typography sx={{ width: '100%', textAlign: 'left' }}>  Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
-          </Box>
+        <Grid item xs={11}>
+          <Grid container alignItems="center">
+            <Grid item xs={12}>
+              <Typography sx={{ width: '100%', textAlign: 'left', bgcolor: '#D9D9D9', padding: 1, borderRadius: 3 }}>Alternativa com linha maior de texto para fazer teste de flexbox</Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item container alignItems="center" spacing={1}>
@@ -89,15 +99,19 @@ export default function RadioGroupQuestionario() {
               borderRadius: 3,
               color: selectedOption === 'D' ? 'white' : '#017BF7',
               backgroundColor: selectedOption === 'D' ? '#017BF7' : 'transparent',
+              width: '100%',
+              height: '100%',
             }}
           >
             D
           </Button>
         </Grid>
-        <Grid item xs={10}>
-          <Box sx={{ backgroundColor: '#D9D9D9', padding: 1, borderRadius: 3 }}>
-            <Typography sx={{ width: '100%', textAlign: 'left' }}>Alternativa</Typography>
-          </Box>
+        <Grid item xs={11}>
+          <Grid container alignItems="center">
+            <Grid item xs={12}>
+              <Typography sx={{ width: '100%', textAlign: 'left', bgcolor: '#D9D9D9', padding: 1, borderRadius: 3 }}>Alternativa</Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
