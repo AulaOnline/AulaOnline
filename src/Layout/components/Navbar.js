@@ -46,7 +46,7 @@ const Navbar = ({ name, cor }) => {
             Home
           </MenuItem>
           <MenuItem component={Link} to="/Chatbot" onClick={handleClose}>
-            Chatbot
+            Adicionar Vídeo
           </MenuItem>
           <MenuItem component={Link} to="/MeuPerfil" onClick={handleClose}>
             Meu Perfil
@@ -61,7 +61,7 @@ const Navbar = ({ name, cor }) => {
         {!isSmallScreen && (
           <ButtonGroup variant="text" aria-label="text button group" sx={{ padding: '20px' }}>
             <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }} onClick={() => navigateTo('/')}>Login</Button>
-            <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }} onClick={() => navigateTo('/input')}>Chatbot</Button>
+            <Button style={{ color: 'white', borderRight: 'transparent', paddingRight: '8px' }} onClick={() => navigateTo('/input')}>Adicionar Vídeo</Button>
             <Button style={{ color: 'white' ,  borderRight: 'transparent', paddingRight: '8px'}}onClick={() => navigateTo('/MeuPerfil')}>Meu Perfil</Button>
             <Button style={{ color: 'white' }}>Sobre</Button>
 

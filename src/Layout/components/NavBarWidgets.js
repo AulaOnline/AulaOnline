@@ -78,12 +78,12 @@ const NavbarWidgets = ({ name, cor }) => {
             </ListItemIcon>
             <ListItemText primary="Meu Histórico" />
           </ListItem>
-          <ListItem button key="Minhas Anotações" onClick={() => navigateTo('/anotacoes')}>
+         {/* <ListItem button key="Minhas Anotações" onClick={() => navigateTo('/anotacoes')}>
             <ListItemIcon>
               <NoteAddIcon />
             </ListItemIcon>
             <ListItemText primary="Minhas Anotações" />
-          </ListItem>
+          </ListItem>*/}
           <ListItem button key="Questionários Finalizados" onClick={() => navigateTo('/questionario')}>
             <ListItemIcon>
               <PlaylistAddCheckIcon />
