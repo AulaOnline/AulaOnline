@@ -1,42 +1,61 @@
-import * as React from 'react';
-import Navbar from "../Layout/components/Navbar";
-import { Grid, Paper, Typography, Button } from "@mui/material";
-import { MobileStepper } from "@mui/material";
+import React, { useState } from 'react';
+import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogActions from '@mui/material/DialogActions';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import CheckIcon from '@mui/icons-material/Check';
+import { Grid } from '@mui/material';
+import Navbar from '../Layout/components/Navbar';
+import Footer from '../Layout/components/Footer';
 
-export default function Questionario() {
-    const steps = [
-        {
-            label: 'Questão 1',
-            description: `Texto da questão importada do chatGPT (alternativas tambem serão importadas), texto generico apenas para mostrar a disposição das funcionalidades na tela.`,
-            options: ['A', 'B', 'C', 'D']
-        },
-        {
-            label: 'Questão 2',
-            description: `Texto da questão importada do chatGPT (alternativas tambem serão importadas), texto generico apenas para mostrar a disposição das funcionalidades na tela.`,
-            options: ['A', 'B', 'C', 'D']
-        },
-        {
-            label: 'Questão 3',
-            description: `Texto da questão importada do chatGPT (alternativas tambem serão importadas), texto generico apenas para mostrar a disposição das funcionalidades na tela.`,
-            options: ['A', 'B', 'C', 'D']
-        },
-        {
-            label: 'Questão 4',
-            description: `Texto da questão importada do chatGPT (alternativas tambem serão importadas), texto generico apenas para mostrar a disposição das funcionalidades na tela.`,
-            options: ['A', 'B', 'C', 'D']
-        },
-        {
-            label: 'Questão 5',
-            description: `Texto da questão importada do chatGPT (alternativas tambem serão importadas), texto generico apenas para mostrar a disposição das funcionalidades na tela.`,
-            options: ['A', 'B', 'C', 'D']
-        },
-    ];
+const steps = [
+    {
+        question: 'Qual é a capital do Brasil?',
+        options: ['A', 'B', 'C', 'D'],
+        alternatives: ['Brasília', 'Jacaré dos Homens', 'Barra de São Miguel', 'Maceió'],
+        answer: 'A'
+    },
+    {
+        question: 'Qual é o maior planeta do sistema solar?',
+        options: ['A', 'B', 'C', 'D'],
+        alternatives: ['Júpiter', 'Plutão', 'Terra Plana', 'Planeta Brasil'],
+        answer: 'A'
+    },
+    {
+        question: 'Quem escreveu "Dom Quixote"?',
+        options: ['A', 'B', 'C', 'D'],
+        alternatives: ['Machado de Assis', 'Cervantes', 'Shakespeare', 'Dostoiévski'],
+        answer: 'B'
+    },
+    {
+        question: 'Qual é a fórmula química da água?',
+        options: ['A', 'B', 'C', 'D'],
+        alternatives: ['H2O', 'CO2', 'O2', 'NaCl'],
+        answer: 'A'
+    },
+    {
+        question: 'Quem pintou a "Mona Lisa"?',
+        options: ['A', 'B', 'C', 'D'],
+        alternatives: ['Van Gogh', 'Da Vinci', 'Picasso', 'Michelangelo'],
+        answer: 'B'
+    },
+    // Adicione mais etapas conforme necessário
+];
+
+export default function TextMobileStepper() {
     const theme = useTheme();
-    const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = steps.length;
+    const [activeStep, setActiveStep] = useState(0);
+    const [selectedOptions, setSelectedOptions] = useState(Array(steps.length).fill(''));
+    const [openDialog, setOpenDialog] = useState(false);
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -45,141 +64,122 @@ export default function Questionario() {
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
-    const [selectedOption, setSelectedOption] = React.useState(Array(steps.length).fill(null));
 
-    const handleOptionClick = (option, index) => {
-        setSelectedOption(prevSelectedOption => {
-            const newSelectedOption = [...prevSelectedOption];
-            newSelectedOption[index] = option;
-            return newSelectedOption;
-        });
+    const handleOptionClick = (index) => {
+        const newSelectedOptions = [...selectedOptions];
+        newSelectedOptions[activeStep] = `option-${index}`;
+        setSelectedOptions(newSelectedOptions);
     };
 
+    const handleConfirm = () => {
+        setOpenDialog(true);
+    };
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    };
+
+    const calculateCorrectAnswers = () => {
+        return selectedOptions.reduce((count, selectedOption, index) => {
+            const correctAnswer = `option-${steps[index].options.indexOf(steps[index].answer)}`;
+            return count + (selectedOption === correctAnswer ? 1 : 0);
+        }, 0);
+    };
+
+
+    const correctAnswers = calculateCorrectAnswers();
+
     return (
-        <Grid container>
+        <Grid container sx={{ bgcolor: "#101824" }}>
             <Navbar />
-            <Grid
-                container
-                direction="column"
-                xs='12'
-                sx={{
-                    bgcolor: "#101824",
-                    display: "flex",
-                    height: "calc(100vh - 64px)",
-                    width: "calc(100vw - 20%)",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center"
-                }}>
-                <Paper elevation={5} sx={{ borderRadius: 6, bgcolor: "#101818", height: "80%", width: "50%" }}>
-                    <Grid container
-                        xs={'auto'}
-                        direction="column"
-                        alignItems="flex-start"
-                        sx={{
-                            height: '100%',
-                            alignItems: "flex-start"
-                        }}>
-                        <Grid item container
-                            justifyContent="center"
+            <Grid container sx={{ minHeight: 'calc(100vh - 125px)', alignItems: "center", justifyContent: 'center' }}>
+                <Paper elevation={15} variant='outlined' sx={{ bgcolor: "#101824" }}>
+                    <Box sx={{ maxWidth: 400, flexGrow: 1, bgcolor: '#017BF7' }}>
+                        <Paper
+                            square
+                            elevation={2}
                             sx={{
-                                borderRadius: '32px 32px 0 0',
-                                bgcolor: "#017BF7",
-                                width: "100%"
-                            }}>
-                            <Typography sx={{ fontSize: '2vw', textAlign: 'center' }}>{steps[activeStep].label}</Typography>
-                        </Grid>
-                        <Grid item container sx={{ bgcolor: "#D9D9D9", height: '25%', width: '100%', p: 2 }}>
-                            <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.4vw' }}>{steps[activeStep].description}</Typography>
-                        </Grid>
-                            <Grid item container xs={'8'} sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2, overflowY: 'auto', alignItems: 'center', height: '75%' }}>
-                            <Grid container
-                                direction="column"
-                                spacing={2}
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: 'center'
-                                }}>
+                                display: 'flex',
+                                alignItems: 'center',
+                                height: 50,
+                                pl: 2,
+                            }}
+                        >
+                            <Typography>{steps[activeStep].question}</Typography>
+                        </Paper>
+                        <Box sx={{ height: 400, maxWidth: 400, width: '100%', p: 2, overflowY: 'auto', bgcolor: "#101824", padding:'0px' }}>
+                            <Grid container justifyContent="flex-start" alignItems="center">
                                 {steps[activeStep].options.map((option, index) => (
-                                    <Grid item container xs='auto' sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2 }}>
-                                    <Grid item xs={2}>
-                                        <Button
-                                            variant={selectedOption[activeStep] === option ? 'contained' : 'outlined'}
-                                            onClick={() => handleOptionClick(option, activeStep)}
-                                            sx={{
-                                                fontSize: '1vw',
-                                                borderRadius: '9px 0 0 9px',
-                                                color: selectedOption[activeStep] === option ? 'white' : '#017BF7',
-                                                backgroundColor: selectedOption[activeStep] === option ? '#017BF7' : 'transparent',
-                                                width: '100%', // Remova fullWidth e use width: '100%'
-                                                height: '100%',
-                                            }}
-                                        >
-                                            {option}
-                                        </Button>
+                                    <Grid item key={index} xs={12} md={12}>
+                                        <Paper variant='outlined' sx={{ marginBottom: '10px', bgcolor: '#D9D9D9', padding: '10px', }}>
+                                            <Button
+                                                size='small'
+                                                variant={selectedOptions[activeStep] === `option-${index}` ? 'contained' : 'outlined'}
+                                                onClick={() => handleOptionClick(index)}
+                                            >
+                                                {option}
+                                            </Button>
+                                            <Typography>{steps[activeStep].alternatives[index]}</Typography>
+                                        </Paper>
                                     </Grid>
-                                    <Grid item xs={10} sx={{ display: "flex", alignItems: 'stretch', bgcolor: "#D9D9D9", borderRadius: '0 9px 9px 0' }}>
-                                        <Typography
-                                            sx={{
-                                                fontSize: '1vw',
-                                                textAlign: 'left',
-                                                padding: 1,
-                                                width: '100%',
-                                            }}
-                                        >
-                                            Alternativa com linha maior de texto para fazer teste de flexbox
-                                        </Typography>
-                                    </Grid>
-                                </Grid>
-                                
                                 ))}
                             </Grid>
-                        </Grid>
-                    </Grid>
+                        </Box>
+                        <MobileStepper
+                            variant="text"
+                            steps={steps.length}
+                            position="static"
+                            activeStep={activeStep}
+                            nextButton={
+                                <Button
+                                    size="small"
+                                    onClick={handleNext}
+                                    disabled={activeStep === steps.length - 1}
+                                >
+                                    Proxima
+                                    {theme.direction === 'rtl' ? (
+                                        <KeyboardArrowLeft />
+                                    ) : (
+                                        <KeyboardArrowRight />
+                                    )}
+                                </Button>
+                            }
+                            backButton={
+                                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                                    {theme.direction === 'rtl' ? (
+                                        <KeyboardArrowRight />
+                                    ) : (
+                                        <KeyboardArrowLeft />
+                                    )}
+                                    Anterior
+                                </Button>
+                            }
+                        />
+
+                    </Box>
                 </Paper>
-                <Grid item container justifyContent="center" sx={{ width: "100%" }}>
-                    <MobileStepper
-                        sx={{ width: "100%", borderRadius: 16, bgcolor: "#101824" }}
-                        variant="text"
-                        steps={maxSteps}
-                        position="static"
-                        activeStep={activeStep}
-                        nextButton={
-                            <Button
-                                variant="contained"
-                                sx={{ width: '50px', height: '50px', borderRadius: '50%' }}
-                                bgcolor="#017BF7"
-                                size="large"
-                                onClick={handleNext}
-                                disabled={activeStep === maxSteps - 1}
-                            >
-                                {theme.direction === 'rtl' ? (
-                                    <ArrowBackIcon />
-                                ) : (
-                                    <ArrowForwardIcon />
-                                )}
-                            </Button>
-                        }
-                        backButton={
-                            <Button
-                                variant="contained"
-                                sx={{ width: '50px', height: '50px', borderRadius: '50%' }}
-                                bgcolor="#017BF7"
-                                size="large"
-                                onClick={handleBack}
-                                disabled={activeStep === 0}
-                            >
-                                {theme.direction === 'rtl' ? (
-                                    <ArrowForwardIcon />
-                                ) : (
-                                    <ArrowBackIcon />
-                                )}
-                            </Button>
-                        }
-                    />
+                <Grid item xs={12} md={12}>
+                {activeStep === steps.length - 1 && (
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}>
+                        <Button variant="contained" onClick={handleConfirm}>
+                            Confirmar Respostas
+                        </Button>
+                    </Box>
+                )}
                 </Grid>
             </Grid>
+            <Footer cor={'#017BF7'} />
+            <Dialog open={openDialog} onClose={handleCloseDialog}>
+                <DialogTitle>Resultado</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        {`Você acertou ${correctAnswers} de ${steps.length} perguntas!`}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseDialog}>Fechar</Button>
+                </DialogActions>
+            </Dialog>
         </Grid>
     );
 }
