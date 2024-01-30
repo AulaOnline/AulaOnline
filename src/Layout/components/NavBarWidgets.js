@@ -61,8 +61,8 @@ const NavbarWidgets = ({ name, cor }) => {
           <ListItem component={Link} to="/" onClick={() => navigateTo('/')} button key="Home">
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem component={Link} to="/Chatbot" onClick={() => navigateTo('/Chatbot')} button key="Chatbot">
-            <ListItemText primary="Chatbot" />
+          <ListItem component={Link} to="/Input" onClick={() => navigateTo('/Chatbot')} button key="Chatbot">
+            <ListItemText primary="Adicionar vídeo" />
           </ListItem>
           <ListItem component={Link} to="/MeuPerfil" onClick={() => navigateTo('/MeuPerfil')} button key="Meu Perfil">
             <ListItemText primary="Meu Perfil" />
@@ -84,7 +84,7 @@ const NavbarWidgets = ({ name, cor }) => {
             </ListItemIcon>
             <ListItemText primary="Minhas Anotações" />
           </ListItem>
-          <ListItem button key="Questionários Finalizados" onClick={() => navigateTo('/questionarios')}>
+          <ListItem button key="Questionários Finalizados" onClick={() => navigateTo('/questionario')}>
             <ListItemIcon>
               <PlaylistAddCheckIcon />
             </ListItemIcon>

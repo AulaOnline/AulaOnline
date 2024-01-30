@@ -10,7 +10,7 @@ function MeuPerfil() {
     <Grid container sx={{bgcolor: "#101824"}}>
       <NavbarWidgets name="Aula Online" cor="#017BF7" />
 
-     {/* <SearchInput/>*/}
+     <SearchInput/>
 
       <Grid container sx={{ minHeight: "calc(100vh - 64px)", paddingTop: '20px', paddingLeft: '20px', paddingRight: '20px' }} spacing={2}>
         {/* Cards de vídeo */}
