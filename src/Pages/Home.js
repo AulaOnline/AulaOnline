@@ -4,8 +4,8 @@ import Navbar from "../Layout/components/Navbar";
 import Footer from "../Layout/components/Footer";
 import MailLockOutlinedIcon from '@mui/icons-material/MailLockOutlined';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import CadastroDialog from '../components/CadastroDialog';
-import EsqueciMinhaSenha from '../components/EsqueciMinhaSenha';
+import CadastroDialog from '../Layout/features/Login/CadastroDialog'
+import EsqueciMinhaSenha from '../Layout/features/Login/EsqueciMinhaSenha';
 import { useNavigate } from 'react-router';
 
 function Home() {
