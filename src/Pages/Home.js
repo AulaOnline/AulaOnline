@@ -6,16 +6,20 @@ import MailLockOutlinedIcon from '@mui/icons-material/MailLockOutlined';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CadastroDialog from '../components/CadastroDialog';
 import EsqueciMinhaSenha from '../components/EsqueciMinhaSenha';
+import { useNavigate } from 'react-router';
 
 function Home() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigate = useNavigate()
 
     const handleLogin = () => {
         // Lógica de login aqui, por exemplo, enviar os dados para um servidor
         console.log('Email:', email);
         console.log('Senha:', password);
         // Adicione aqui a lógica para o redirecionamento para a pagina de colocar o link se o usuario for autenticado.
+        navigate('/meuperfil')
     };
 
     const isSmallScreen = useMediaQuery('(max-width: 900px)');
