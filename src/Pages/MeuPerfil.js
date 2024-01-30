@@ -1,9 +1,9 @@
 import React from 'react';
 import NavbarWidgets from '../Layout/components/NavBarWidgets';
-import VideoCard from '../components/VideoCards/VideoCard';
+import VideoCard from '../Layout/features/VideoCards/VideoCard.js';
 import { Divider, Grid, Box } from '@mui/material';
 import Footer from '../Layout/components/Footer';
-import SearchInput from '../components/SearchInput/Search.js';
+import SearchInput from '../Layout/features/SearchInput/Search.js';
 
 function MeuPerfil() {
   return (

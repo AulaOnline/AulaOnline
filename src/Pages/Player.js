@@ -24,7 +24,7 @@ function VideoAndChat(){
                              width='100%'
                              height='100%'
                              controls={true}
-                />)
+                />
             </Grid>
             <Grid item xs={12} md={3.5} sx={{ height: "calc(60vh)", marginLeft:'20px'}}>
                 <Editor/>
