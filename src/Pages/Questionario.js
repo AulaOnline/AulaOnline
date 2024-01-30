@@ -58,87 +58,81 @@ export default function Questionario() {
     return (
         <Grid container>
             <Navbar />
-            <Grid 
-            container 
-            direction="column" 
-            xs='12'
-            sx={{ 
-                bgcolor: "#101824", 
-                display: "flex", 
-                height: "calc(100vh - 64px)", 
-                justifyContent: "center", 
-                alignItems: "center", 
-                textAlign: "center" 
+            <Grid
+                container
+                direction="column"
+                xs='12'
+                sx={{
+                    bgcolor: "#101824",
+                    display: "flex",
+                    height: "calc(100vh - 64px)",
+                    width: "calc(100vw - 20%)",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center"
                 }}>
                 <Paper elevation={5} sx={{ borderRadius: 6, bgcolor: "#101818", height: "80%", width: "50%" }}>
-                    <Grid container 
-                    xs= {'auto'}
-                    direction="column" 
-                    alignItems="stretch" 
-                    sx={{ 
-                        height: '100%', 
-                        alignItems: "center" 
+                    <Grid container
+                        xs={'auto'}
+                        direction="column"
+                        alignItems="flex-start"
+                        sx={{
+                            height: '100%',
+                            alignItems: "flex-start"
                         }}>
-                        <Grid item container 
-                        justifyContent="center" 
-                        sx={{ 
-                            borderRadius: '32px 32px 0 0', 
-                            bgcolor: "#017BF7", 
-                            width: "100%" 
+                        <Grid item container
+                            justifyContent="center"
+                            sx={{
+                                borderRadius: '32px 32px 0 0',
+                                bgcolor: "#017BF7",
+                                width: "100%"
                             }}>
                             <Typography sx={{ fontSize: '2vw', textAlign: 'center' }}>{steps[activeStep].label}</Typography>
                         </Grid>
                         <Grid item container sx={{ bgcolor: "#D9D9D9", height: '25%', width: '100%', p: 2 }}>
                             <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.4vw' }}>{steps[activeStep].description}</Typography>
                         </Grid>
-                        <Grid item container xs= 'auto' sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2 }}>
-                            <Grid container 
-                            direction="column" 
-                            spacing={3} 
-                            sx={{ 
-                                display: "flex", 
-                                justifyContent: "center", 
-                                alignItems: "center" 
+                            <Grid item container xs={'8'} sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2, overflowY: 'auto', alignItems: 'center', height: '75%' }}>
+                            <Grid container
+                                direction="column"
+                                spacing={2}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: 'center'
                                 }}>
                                 {steps[activeStep].options.map((option, index) => (
-                                    <Grid item container alignItems="center" spacing={3} key={option}>
-                                        <Grid item>
-                                            <Button
-                                                variant={selectedOption[activeStep] === option ? 'contained' : 'outlined'}
-                                                onClick={() => handleOptionClick(option, activeStep)}
-                                                fullWidth
-                                                sx={{
-                                                    fontSize: '1vw',
-                                                    borderRadius: 3,
-                                                    color: selectedOption[activeStep] === option ? 'white' : '#017BF7',
-                                                    backgroundColor: selectedOption[activeStep] === option ? '#017BF7' : 'transparent',
-                                                    width: '100%',
-                                                    height: '100%',
-                                                }}
-                                            >
-                                                {option}
-                                            </Button>
-                                        </Grid>
-                                        <Grid item container alignItems={'center'} xs={'auto'}>
-                                                    <Typography 
-                                                    sx={{ 
-                                                        fontSize: '1vw', 
-                                                        width: '100%', 
-                                                        textAlign: 'left', 
-                                                        bgcolor: '#D9D9D9', 
-                                                        padding: 1, 
-                                                        borderRadius: 3 
-                                                    }}
-                                                    //quebra de linha automatica pra evitar bug ???
-                                                    //style={{ 
-                                                    //    wordWrap: 'break-word', 
-                                                    //    overflowWrap: 'break-word' 
-                                                    // }}
-                                                    >
-                                                    Alternativa com linha maior de texto para fazer teste de flexbox  
-                                                    </Typography>
-                                        </Grid>
+                                    <Grid item container xs='auto' sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2 }}>
+                                    <Grid item xs={2}>
+                                        <Button
+                                            variant={selectedOption[activeStep] === option ? 'contained' : 'outlined'}
+                                            onClick={() => handleOptionClick(option, activeStep)}
+                                            sx={{
+                                                fontSize: '1vw',
+                                                borderRadius: '9px 0 0 9px',
+                                                color: selectedOption[activeStep] === option ? 'white' : '#017BF7',
+                                                backgroundColor: selectedOption[activeStep] === option ? '#017BF7' : 'transparent',
+                                                width: '100%', // Remova fullWidth e use width: '100%'
+                                                height: '100%',
+                                            }}
+                                        >
+                                            {option}
+                                        </Button>
                                     </Grid>
+                                    <Grid item xs={10} sx={{ display: "flex", alignItems: 'stretch', bgcolor: "#D9D9D9", borderRadius: '0 9px 9px 0' }}>
+                                        <Typography
+                                            sx={{
+                                                fontSize: '1vw',
+                                                textAlign: 'left',
+                                                padding: 1,
+                                                width: '100%',
+                                            }}
+                                        >
+                                            Alternativa com linha maior de texto para fazer teste de flexbox
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                                
                                 ))}
                             </Grid>
                         </Grid>
