@@ -59,7 +59,7 @@ const Navbar = ({ name, cor }) => {
           onClose={handleClose}
         >
           <MenuItem onClick={() => navigateTo('/')}>Home</MenuItem>
-          <MenuItem onClick={() => navigateTo('/Chatbot')}>Adicionar Vídeo</MenuItem>
+          <MenuItem onClick={() => navigateTo('/input')}>Adicionar Vídeo</MenuItem>
           <MenuItem onClick={() => navigateTo('/MeuPerfil')}>Meu Perfil</MenuItem>
         </Menu>
         <Typography variant="h6" component="div">
