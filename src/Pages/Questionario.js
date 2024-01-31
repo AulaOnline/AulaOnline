@@ -108,18 +108,18 @@ export default function Questionario() {
                     textAlign: "center"
                 }}
             >
-                <Paper elevation={5} xs="12" md="12" sx={{ borderRadius: 6, bgcolor: "#101818", height: "85%", width: "55%" }}>
-                    <Grid container xs="12" md="12" direction="column" alignItems="center" sx={{ height: '100%', alignItems: "flex-start" }}>
-                        <Grid item container justifyContent="center" sx={{ borderRadius: '32px 32px 0 0', bgcolor: "#017BF7", width: "100%" }}>
+                <Paper elevation={5} xs="12" md="12" sx={{ borderRadius: 6, bgcolor: "#101818", height: "85%", width: "55%", overflow: "auto" }}>
+                    <Grid container xs="12" md="12" direction="column" alignItems="center" sx={{ height: '100%', alignItems: "flex-start", overflow: "auto" }}>
+                        <Box item container justifyContent="center" sx={{ borderRadius: '32px 32px 0 0', bgcolor: "#017BF7", width: "100%" }}>
                             <Typography sx={{ fontSize: '2vw', textAlign: 'center' }}>{steps[activeStep].label}</Typography>
-                        </Grid>
+                        </Box>
                         <Grid item container sx={{ bgcolor: "#D9D9D9", height: '25%', width: '100%', p: 2 }}>
                             <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.4vw' }}>{steps[activeStep].question}</Typography>
-                        </Grid>
-                        <Grid item container xs={'auto'} md={'auto'} sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2, overflowY: 'auto', alignItems: 'center', height: '75%' }}>
-                            <Grid container direction="column" spacing={2} sx={{ display: "flex", justifyContent: "center", alignItems: 'center' }}>
+                        </Grid>:
+                        <Box sx={{ bgcolor: "#101818", width: '100%', overflow: 'auto', alignItems: 'center'}}>
+                            <Grid container direction="column" spacing={1} sx={{ justifyContent: "center", alignItems: 'center', padding:'0px' }}>
                                 {steps[activeStep].options.map((option, index) => (
-                                    <Grid item container xs={12} md={12} sx={{ display: "flex", bgcolor: "#101818", width: '100%', p: 2 }}>
+                                    <Grid item container xs={12} md={12} sx={{  bgcolor: "#101818", width: '100%', padding: '0px'}}>
                                         <Grid item xs={2} md={1}>
                                             <Button
                                                 variant={selectedOptions[activeStep] === `option-${index}` ? 'contained' : 'outlined'}
@@ -136,7 +136,7 @@ export default function Questionario() {
                                                 {option}
                                             </Button>
                                         </Grid>
-                                        <Grid item xs={10} md={11} sx={{ minWidth: '80%', display: "flex", alignItems: 'stretch', bgcolor: "#D9D9D9", borderRadius: '0 9px 9px 0' }}>
+                                        <Grid item xs={10} md={11} sx={{ display: "flex", alignItems: 'stretch', bgcolor: "#D9D9D9", borderRadius: '0 9px 9px 0', padding:'0px' }}>
                                             <Typography sx={{ fontSize: '1vw', textAlign: 'left', padding: 1, width: '100%' }}>{steps[activeStep].alternatives[index]}</Typography>
                                         </Grid>
                                     </Grid>
@@ -151,10 +151,10 @@ export default function Questionario() {
                                     )}
                                 </Grid>
                             </Grid>
-                        </Grid>
+                        </Box>
                     </Grid>
                 </Paper>
-                <Grid item container justifyContent="center" sx={{ width: "100%" }}>
+                <Grid item container justifyContent="center" sx={{ width: "100%", overflow: "auto" }}>
                     <MobileStepper
                         sx={{ width: "100%", borderRadius: 16, bgcolor: "#101824" }}
                         variant="text"
@@ -188,7 +188,7 @@ export default function Questionario() {
                     />
                 </Grid>
             </Grid>
-            <Footer cor={'#017BF7'} />
+            <Footer cor={'#017BF7'} />  
             <Dialog open={openDialog} onClose={handleCloseDialog}>
                 <DialogTitle>Resultado</DialogTitle>
                 <DialogContent>
