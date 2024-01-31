@@ -107,7 +107,7 @@ export default function TextMobileStepper() {
                         >
                             <Typography>{steps[activeStep].question}</Typography>
                         </Paper>
-                        <Box sx={{ height: 400, maxWidth: 400, width: '100%', p: 2, overflowY: 'auto', bgcolor: "#101824", padding:'0px' }}>
+                        <Box sx={{ height: 350, maxWidth: 400, width: '100%', p: 2, overflowY: 'auto', bgcolor: "#101824", padding:'0px' }}>
                             <Grid container justifyContent="flex-start" alignItems="center">
                                 {steps[activeStep].options.map((option, index) => (
                                     <Grid item key={index} xs={12} md={12}>
@@ -183,3 +183,4 @@ export default function TextMobileStepper() {
         </Grid>
     );
 }
+
