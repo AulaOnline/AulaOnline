@@ -7,6 +7,7 @@ import MeuPerfil from "./Pages/MeuPerfil";
 import Player from "./Pages/Player";
 import Quintal from "./Pages/quintal";
 import Questionario from "./Pages/Questionario";
+import Questionario2 from './Pages/teste';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             
 
             <Route path="/questionario" element={<Questionario/>}/>
+            <Route path="/questionario2" element={<Questionario2/>}/>
 
         </Routes>
       </Box>

@@ -1,16 +1,16 @@
 import React from 'react';
 import NavbarWidgets from '../Layout/components/NavBarWidgets';
-import VideoCard from '../components/VideoCards/VideoCard';
+import VideoCard from '../Layout/features/VideoCards/VideoCard.js';
 import { Divider, Grid, Box } from '@mui/material';
 import Footer from '../Layout/components/Footer';
-import SearchInput from '../components/SearchInput/Search.js';
+import SearchInput from '../Layout/features/SearchInput/Search.js';
 
 function MeuPerfil() {
   return (
     <Grid container sx={{bgcolor: "#101824"}}>
       <NavbarWidgets name="Aula Online" cor="#017BF7" />
 
-     {/* <SearchInput/>*/}
+     <SearchInput/>
 
       <Grid container sx={{ minHeight: "calc(100vh - 64px)", paddingTop: '20px', paddingLeft: '20px', paddingRight: '20px' }} spacing={2}>
         {/* Cards de vídeo */}
