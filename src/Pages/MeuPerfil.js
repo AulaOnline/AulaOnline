@@ -1,11 +1,51 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import NavbarWidgets from '../Layout/components/NavBarWidgets';
 import VideoCard from '../Layout/features/VideoCards/VideoCard.js';
 import { Divider, Grid, Box } from '@mui/material';
 import Footer from '../Layout/components/Footer';
 import SearchInput from '../Layout/features/SearchInput/Search.js';
+import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 function MeuPerfil() {
+
+  const navigate = useNavigate();
+  const [isValidToken, setIsValidToken] = useState(false);
+
+  useEffect(() => {
+    // Verifica se há um token no localStorage
+    const token = localStorage.getItem('token');
+    console.log('Token:', token);
+    if (token) {
+        // Faz uma requisição para verificar se o token é válido
+        axios.post('http://localhost:3001/login/verificar-token', { token }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => {
+            console.log('Resposta da verificação de token:', response.data);
+            const { success } = response.data;
+            if (success) {
+                // Se o token for válido, define isValidToken como true
+                setIsValidToken(true);
+            } else {
+                // Se o token não for válido, redireciona para a página inicial
+                navigate('/');
+            }
+        })
+        .catch((error) => {
+            console.error('Erro ao verificar o token:', error);
+            // Em caso de erro na requisição, redireciona para a página inicial
+            navigate('/');
+        });
+    } else {
+        // Se não houver token no localStorage, redireciona para a página inicial
+        navigate('/');
+    }
+}, []); // Executa apenas uma vez, quando o componente é montado
+
   return (
     <Grid container sx={{bgcolor: "#101824"}}>
       <NavbarWidgets name="Aula Online" cor="#017BF7" />

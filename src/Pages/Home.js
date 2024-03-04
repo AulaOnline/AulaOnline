@@ -7,6 +7,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CadastroDialog from '../Layout/features/Login/CadastroDialog'
 import EsqueciMinhaSenha from '../Layout/features/Login/EsqueciMinhaSenha';
 import { useNavigate } from 'react-router';
+import axios from 'axios'
 
 function Home() {
     const [email, setEmail] = useState('');
@@ -16,10 +17,29 @@ function Home() {
 
     const handleLogin = () => {
         // Lógica de login aqui, por exemplo, enviar os dados para um servidor
-        console.log('Email:', email);
-        console.log('Senha:', password);
-        // Adicione aqui a lógica para o redirecionamento para a pagina de colocar o link se o usuario for autenticado.
-        navigate('/meuperfil')
+        const url = 'http://localhost:3001/login/checkCredentials'
+        let resposta
+        const data = {
+            username : email,
+            password : password
+        }
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(url,data,config)
+        .then((response) => {
+            const { statusCode, data } = response.data;
+            if (statusCode === 200) {
+                // Se a resposta for 200, armazene o token no localStorage
+                localStorage.setItem('token', data.token);
+                // Redirecione para a página de perfil
+                navigate('/meuperfil');
+            } else {
+                // Tratar outras respostas, por exemplo, exibir uma mensagem de erro
+                console.error('Erro:', response.data.message);
+            }})
     };
 
     const isSmallScreen = useMediaQuery('(max-width: 900px)');

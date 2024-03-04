@@ -239,12 +239,13 @@ const CadastroDialog = () => {
                     Os Campos de senha devem coincidir!
                 </Alert>
             </Snackbar>
-            <Snackbar open={confirmationSnackbar} autoHideDuration={5000} onClose={handleSnackbarClose}>
+            <Snackbar open={confirmationSnackbar} autoHideDuration={5000} onClose={handleSnackbarClose} anchorOrigin={{vertical:'top', horizontal:'center'}}>
                 <Alert
                     onClose={handleSnackbarClose}
                     severity="success"
                     variant="filled"
                     sx={{ width: '100%' }}
+                    
                 >
                     Cadastro realizado com sucesso!
                 </Alert>
