@@ -14,6 +14,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import CakeIcon from '@mui/icons-material/Cake';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
+import axios from 'axios'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} timeout={{ enter: 800, exit: 800 }} />;
@@ -81,11 +82,33 @@ const CadastroDialog = () => {
             return;
         }
 
-        // Adicione lógica de envio ou validação aqui
-        console.log(formData);
 
-        // Exibe Snackbar de confirmação
-        setConfirmationSnackbar(true);
+        // Adicione lógica de envio ou validação aqui
+        const url = 'http://localhost:3001/login/createUser'
+
+        const headers = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const data = {
+            email : formData.email,
+            username : formData.nome,
+            password : formData.senha
+        }
+        
+        axios.post(url,data,headers)
+        .then((response) =>{
+            if (response.status == 200) {
+                // Exibe Snackbar de confirmação
+                setConfirmationSnackbar(true);
+                console.log(response.data.data)
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+        
 
         // Feche o modal após o envio bem-sucedido ou validação
         handleClose();
@@ -100,7 +123,7 @@ const CadastroDialog = () => {
 
     return (
         <>
-            <Button onClick={handleOpen} color="primary" sx={{paddingBottom:'10px'}}>
+            <Button onClick={handleOpen} color="primary" sx={{ paddingBottom: '10px' }}>
                 Se Cadastre!
             </Button>
             <Dialog open={open} TransitionComponent={Transition} onClose={handleClose}>

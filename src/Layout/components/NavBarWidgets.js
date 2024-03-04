@@ -111,11 +111,11 @@ const NavbarWidgets = ({ name, cor }) => {
             </ListItemIcon>
             <ListItemText primary="Meu Histórico" />
           </ListItem>
-          <ListItem button key="Questionários Finalizados" onClick={() => navigateTo('/questionario')}>
+          <ListItem button key="Questionário" onClick={() => navigateTo('/questionario')}>
             <ListItemIcon>
               <PlaylistAddCheckIcon />
             </ListItemIcon>
-            <ListItemText primary="Questionários Finalizados" />
+            <ListItemText primary="Questionário" />
           </ListItem>
         </List>
       </Drawer>
