@@ -79,7 +79,7 @@ function Home() {
                     <TextField
                         label={
                             <Typography sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                                <MailLockOutlinedIcon sx={{ paddingRight: '5px' }} /> Email
+                                <MailLockOutlinedIcon sx={{ paddingRight: '5px' }} /> Usuário
                             </Typography>
                         }
                         variant="outlined"
