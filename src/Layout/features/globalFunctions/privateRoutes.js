@@ -48,11 +48,10 @@ export function PrivateRoute( { Carregando, loading } ) {
     } else {
       // Se não houver token no localStorage, redireciona para a página inicial
       setTimeout(() => {
-
           navigate("/");
     }, 2000);
     }
-  }, []); // Executa apenas uma vez, quando o componente é montado
+  }, []); 
 
   return (
     <Section>
