@@ -57,7 +57,7 @@ export function PrivateRoute( { Carregando, loading } ) {
   return (
     <Section>
         <Grid container sx={{ minHeight: "100vh", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#BFCEDE', paddingBottom: '150px', paddingTop: '10%' }}>
-            <CircularProgress color="secondary" />
+            <CircularProgress color="secondary" size={85} />
         </Grid>
     </Section>
   ); 
