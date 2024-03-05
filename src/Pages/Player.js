@@ -9,6 +9,7 @@ import ReactPlayer from 'react-player/youtube';
 import {useLocation} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { PrivateRoute } from '../Layout/features/globalFunctions/privateRoutes';
 
 const StyledSection = styled.section`
   background-color: #101824;
@@ -19,8 +20,20 @@ function VideoAndChat(){
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const linkAula = queryParams.get('linkAula');
+    const [loading, setLoading] = useState(true)
+
+    function Carregando(loading) {
+      setLoading(!loading)
+    }  
 
     return (
+        <>
+
+        {loading &&
+          <PrivateRoute Carregando={Carregando} loading={loading} />
+        }
+        {!loading &&(
+
         <Grid container sx={{height: 'calc(90vh)', paddingLeft: '40px', paddingTop: '50px', paddingBottom: '0px' }}>
             <Grid item xs={12} md={8.3} sx={{display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center' }}>
                     <ReactPlayer url={linkAula}
@@ -35,6 +48,9 @@ function VideoAndChat(){
             <Button variant="contained" sx={{ height: '5%', width: '10%', marginRight: '30px', backgroundColor: '#0CA789'}}>Gerar Questionario</Button>
             <Button variant="contained" sx={{ height: '5%', width: '10%', backgroundColor: '#9a8c1c' }}>Gerar Resumo</Button>
         </Grid>
+        )
+        }
+        </>
     )
 }
 
