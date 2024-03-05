@@ -36,10 +36,6 @@ function MeuPerfil() {
             <Grid item xs={12} md={4} lg={4} sx={{}}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
                 <VideoCard
-                  title="Título do Vídeo 1"
-                  imageUrl="/video1.jpeg"
-                  duration={15}
-                  sx={{ backgroundColor: '#017BF7' }}
                 />
               </Box>
             </Grid>
@@ -47,62 +43,36 @@ function MeuPerfil() {
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
                 <VideoCard
-                  title="Título do Vídeo 2"
-                  imageUrl="/video2.jpeg"
-                  duration={15}
-                  sx={{ backgroundColor: '#017BF7' }}
                 />
               </Box>
             </Grid>
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard
-                  title="Título do Vídeo 3"
-                  imageUrl="/video3.jpeg"
-                  duration={15}
-                  sx={{ backgroundColor: '#017BF7' }}
-                />
+                <VideoCard/>
               </Box>
             </Grid>
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard
-                  title="Título do Vídeo 4"
-                  imageUrl="/video4.jpeg"
-                  duration={15}
-                  sx={{ backgroundColor: '#017BF7' }}
-                />
+                <VideoCard/>
               </Box>
             </Grid>
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard
-                  title="Título do Vídeo 5"
-                  imageUrl="/video5.jpeg"
-                  duration={15}
-                  sx={{ backgroundColor: '#017BF7' }}
-                />
+                <VideoCard/>
               </Box>
             </Grid>
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard
-                  title="Título do Vídeo 6"
-                  imageUrl="/video6.jpeg"
-                  duration={15}
-                  sx={{ backgroundColor: '#017BF7' }}
-                />
+                <VideoCard/>
               </Box>
             </Grid>
           </Grid>
         )
         }
-
-
         <Footer cor={'#017bf7'} />
       </Grid>
     </>

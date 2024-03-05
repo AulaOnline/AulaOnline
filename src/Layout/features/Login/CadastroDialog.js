@@ -24,7 +24,6 @@ const CadastroDialog = () => {
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState({
         nome: '',
-        idade: '',
         email: '',
         senha: '',
         confirmarSenha: '',
@@ -43,7 +42,6 @@ const CadastroDialog = () => {
         setOpen(false);
         setFormData({
             nome: '',
-            idade: '',
             email: '',
             senha: '',
             confirmarSenha: '',
@@ -67,7 +65,6 @@ const CadastroDialog = () => {
         // campos preenchidos
         if (
             formData.nome.trim() === '' ||
-            formData.idade.trim() === '' ||
             formData.email.trim() === '' ||
             formData.senha.trim() === '' ||
             formData.confirmarSenha.trim() === ''
@@ -140,20 +137,6 @@ const CadastroDialog = () => {
                         InputProps={{
                             startAdornment: (
                                 <PersonIcon color="action" />
-                            ),
-                        }}
-                    />
-                    <TextField
-                        label="Idade"
-                        type="number"
-                        name="idade"
-                        value={formData.idade}
-                        onChange={handleChange}
-                        fullWidth
-                        margin="normal"
-                        InputProps={{
-                            startAdornment: (
-                                <CakeIcon color="action" />
                             ),
                         }}
                     />

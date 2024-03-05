@@ -1,48 +1,63 @@
-import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
-import { ContentEditable } from "@lexical/react/LexicalContentEditable";
-import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
-import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-
-import {HeadingNode} from "@lexical/rich-text";
-import './style.css'
-
-import {
-    ListItemNode,
-    ListNode
-} from "@lexical/list";
-import ToolbarPlugin from "./Toolbar";
-import {ListPlugin} from "@lexical/react/LexicalListPlugin";
-
-const theme = {
-    heading: {
-        h1: 'Editor-H1',
-        h2: 'Editor-H2',
-        h3: 'Editor-H3'
-    }
-}
-
-export default function Editor() {
-    function onError(error) {
-        console.error(error);
-    }
-    const initialConfig = {
-        namespace: 'MyEditor',
-        theme,
-        onError,
-        nodes: [
-            HeadingNode, ListNode, ListItemNode
-        ]
+import React from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import style from "./style.css";
+const RichTextEditor = () => {
+    const modules = {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ indent: '-1' }, { indent: '+1' }],
+            ['link', 'image'],
+        ],
     };
+
+    const formats = [
+        'header',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'list',
+        'bullet',
+        'indent',
+        'link',
+        'image',
+    ];
+
+    const handleEditorContentChange = (content) => {
+        console.log('content: ', content);
+        localStorage.setItem('content', content);
+    };
+
     return (
-        <LexicalComposer initialConfig={initialConfig}>
-            <ToolbarPlugin/>
-            <RichTextPlugin
-                contentEditable={<ContentEditable className="contentEditable" />}
-                placeholder={<div className="placeholder">Enter some text...</div>}
-                ErrorBoundary={LexicalErrorBoundary}
-            />
-            <HistoryPlugin />
-            <ListPlugin />
-        </LexicalComposer>
-    );}
+            <div className="text-editor" style={{ height: '100%', overflow: 'hidden', backgroundColor: '#1E1E1E' }}>
+                <ReactQuill
+                    modules={modules}
+                    formats={formats}
+                    onChange={handleEditorContentChange}
+                    placeholder="Anotar..."
+                    style={{
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        color: '#D4D4D4',
+                    }}
+                >
+                    <div
+                        className="my-editing-area"
+                        style={{
+                            flex: 1,
+                            overflowY: 'auto',
+                            backgroundColor: '#D4D4D4',
+                            color: 'black',
+                        }}
+                    />
+                </ReactQuill>
+            </div>
+    );
+};
+
+export default RichTextEditor;

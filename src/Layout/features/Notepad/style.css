@@ -1,39 +1,19 @@
-.contentEditable {
-    color: #000000;
-    height: 100%;
-    width: 100%;
-    border: 3px inset #000000;
-    background-color: #e0d8ad;
-    border-top: none;
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color-scheme: light dark;
-    font-synthesis: none;
-    padding: 20px; /* Adicione um valor de padding desejado */
-    box-sizing: border-box; /* Evita que o padding extrapole o tamanho total */
-    outline: none; /* Remove a borda de destaque padrão */
+
+.ql-toolbar.ql-snow {
+    border: 1px solid #D4D4D4;
 }
 
+    .ql-toolbar.ql-snow .ql-picker-label:hover,
+    .ql-toolbar.ql-snow .ql-picker-item:hover,
+    .ql-toolbar.ql-snow .ql-picker-label.ql-active,
+    .ql-toolbar.ql-snow .ql-picker-item.ql-selected {
+        color: #D4D4D4;
+    }
 
-.Toolbar-Container{
-    border-top-left-radius: 5px;  /* Raio de curvatura da borda superior esquerda */
-    border-top-right-radius: 5px; /* Raio de curvatura da borda superior direita */
-    background-color: #f3eee7;
-    width: 100%;
-    height:7%;
-}
+    .ql-snow .ql-stroke {
+        stroke: #D4D4D4;
+    }
 
-.Editor-H1 {
-    font-size: 34px;
-}
-
-.Editor-H2 {
-    font-size: 30px;
-}
-
-.Editor-H3 {
-    font-size: 24px;
-}
-
-
+    .ql-snow .ql-fill {
+        fill: #D4D4D4;
+    }
