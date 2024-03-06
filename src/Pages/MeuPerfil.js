@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import NavbarWidgets from '../Layout/components/NavBarWidgets';
 import VideoCard from '../Layout/features/VideoCards/VideoCard.js';
-import { Divider, Grid, Box } from '@mui/material';
+import { Divider, Grid, Box, Button } from '@mui/material';
 import Footer from '../Layout/components/Footer';
 import SearchInput from '../Layout/features/SearchInput/Search.js';
 import { useNavigate } from 'react-router';
@@ -32,6 +32,13 @@ function MeuPerfil() {
 
         {!loading && (
           <Grid container sx={{ minHeight: "calc(100vh - 64px)", paddingTop: '20px', paddingLeft: '20px', paddingRight: '20px' }} spacing={2}>
+
+            <Grid container spacing={2} alignItems={'center'} justifyContent={'center'}>
+              <Grid item xs={12} md={4} sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <Button variant='contained' color='secondary' onClick={() => navigate('/Input')}>adicionar vídeo</Button>
+              </Grid>
+            </Grid>
+
             {/* Cards de vídeo */}
             <Grid item xs={12} md={4} lg={4} sx={{}}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
@@ -49,25 +56,25 @@ function MeuPerfil() {
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard/>
+                <VideoCard />
               </Box>
             </Grid>
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard/>
+                <VideoCard />
               </Box>
             </Grid>
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard/>
+                <VideoCard />
               </Box>
             </Grid>
 
             <Grid item xs={12} md={4} lg={4}>
               <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                <VideoCard/>
+                <VideoCard />
               </Box>
             </Grid>
           </Grid>

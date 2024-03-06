@@ -37,19 +37,23 @@ export function PrivateRoute( { Carregando, loading } ) {
 
           } else {
             // Se o token não for válido, redireciona para a página inicial
-            navigate("/");
+            setTimeout(() => {
+              navigate("/");
+        }, 1000);
           }
         })
         .catch((error) => {
           console.error("Erro ao verificar o token:", error);
           // Em caso de erro na requisição, redireciona para a página inicial
-          navigate("/");
+          setTimeout(() => {
+            navigate("/");
+      }, 1000);
         });
     } else {
       // Se não houver token no localStorage, redireciona para a página inicial
       setTimeout(() => {
           navigate("/");
-    }, 2000);
+    }, 1000);
     }
   }, []); 
 
