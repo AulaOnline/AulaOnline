@@ -4,27 +4,33 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {Button, CardActions} from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
-const MediaCard = () => {
+const MediaCard = ({title, link}) => {
+    const navigate = useNavigate()
+
+    const handleLinkClick = () => {
+        navigate(`/Player?linkAula=${encodeURI(link)}`)
+    }
+
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
                 sx={{ height: 140 }}
                 image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
+                title="video youtube"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                {/* <Typography gutterBottom variant="h5" component="div">
                     Lizard
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                    {title}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small" onClick={handleLinkClick}>Ir ao Video</Button>
+                {/* <Button size="small">Learn More</Button> */}
             </CardActions>
         </Card>
     );

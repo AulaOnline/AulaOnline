@@ -24,16 +24,42 @@ import HomeIcon from '@mui/icons-material/Home';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import { Link } from 'react-router-dom';
 import VideoCard from '../features/VideoCards/VideoCard.js';
+import { ExtrairTkenEretornarID } from '../features/globalFunctions/pegarusername.js'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const drawerWidth = 240;
 
 export default function MeuPerfilPC() {
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(true);
+  const [videos, setVideos] = useState([])
 
   function Carregando(loading) {
     setLoading(!loading);
   }
+
+  useEffect(() => {
+    ExtrairTkenEretornarID().then(id => {
+      if (id) {
+        const fetchVideos = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3001/video/getVideosOfUser/${id}`);
+            console.log(response.data);
+            setVideos(response.data.data)
+          }
+          catch (error){
+            console.log(error.response.data)
+            setVideos([])
+          }
+        };
+        fetchVideos();
+      }
+    }).catch(error => {
+      console.error('Erro ao extrair o ID do usuário:', error);
+    });
+  }, []);
+
 
   return (
     <>
@@ -122,7 +148,7 @@ export default function MeuPerfilPC() {
                   </Grid>
                 </Grid>
                 {/* Cards de vídeo */}
-                <Grid item xs={12} md={4} lg={4} sx={{}}>
+                {/* <Grid item xs={12} md={4} lg={4} sx={{}}>
                   <Box display="flex" flexWrap="wrap" justifyContent="space-around">
                     <VideoCard />
                   </Box>
@@ -151,14 +177,23 @@ export default function MeuPerfilPC() {
                   <Box display="flex" flexWrap="wrap" justifyContent="space-around">
                     <VideoCard />
                   </Box>
-                </Grid>
-              </Grid>
-              <Footer sx={{ width: '100%' }} cor={'#017bf7'} />
-            </Section>
-          </Box>
+                </Grid> */}
+
+                {videos.map(video => (
+                  <Grid item xs={12} md={4} lg={4}>
+                    <Box display="flex" flexWrap="wrap" justifyContent="space-around">
+                    <VideoCard key={video.video_id} title={video.title} link={video.video_link} />
+                  </Box>
+                  </Grid>
+                ))}
+
+            </Grid>
+            <Footer sx={{ width: '100%' }} cor={'#017bf7'} />
+          </Section>
         </Box>
+        </Box >
       )
-      }
+}
     </>
   );
 }
