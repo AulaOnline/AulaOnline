@@ -20,7 +20,7 @@ export async function ExtrairTkenEretornarID () {
             const response = await axios.get(`http://localhost:3001/login/getUserID/${username}`);
             
             // A resposta da solicitação HTTP estará disponível aqui
-            return response.data.userID
+            return response.data.data.id
         } catch (error) {
             // Se ocorrer um erro durante a solicitação HTTP
             console.error('Erro ao fazer a solicitação HTTP:', error);
