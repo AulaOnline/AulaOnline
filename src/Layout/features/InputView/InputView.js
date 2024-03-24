@@ -1,5 +1,5 @@
 // InputView.js
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography, Snackbar, Alert } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import styled from "styled-components";
@@ -12,6 +12,8 @@ import axios from "axios";
 function InputView() {
   const [linkAula, SetLinkAula] = useState('');
   const navigate = useNavigate();
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
 
   const handleButtonClick = async () => {
@@ -28,9 +30,15 @@ function InputView() {
         console.error('ID do usuário não encontrado');
       }
     } catch (error) {
+      setErrorMessage(error.response.data.message)
+      setOpenSnackbar(true)
       console.error('Erro ao postar o novo vídeo:', error);
     }
   }
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
 
   return (
     <Grid container>
@@ -51,6 +59,16 @@ function InputView() {
               </Button>
             </Grid>
           </Grid>
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={5000}
+            onClose={handleCloseSnackbar}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
+            <Alert onClose={handleCloseSnackbar} severity="error" sx={{ width: '100%' }}>
+              {errorMessage}
+            </Alert>
+          </Snackbar>
         </Grid>
       </Section>
       <Footer cor={'black'} />

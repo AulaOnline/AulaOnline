@@ -33,6 +33,8 @@ const CadastroDialog = () => {
     const [errorSnackbarIdade, setErrorSnackbarIdade] = useState(false);
     const [passwordMatchErrorSnackbar, setPasswordMatchErrorSnackbar] = useState(false);
     const [confirmationSnackbar, setConfirmationSnackbar] = useState(false);
+    const [error, setError] = useState(false)
+    const [message,setMessage] = useState('')
 
     const handleOpen = () => {
         setOpen(true);
@@ -100,15 +102,18 @@ const CadastroDialog = () => {
                 // Exibe Snackbar de confirmação
                 setConfirmationSnackbar(true);
                 console.log(response.data.data)
+                handleClose();
             }
         })
         .catch((error) => {
             console.log(error)
+            setMessage(error.response.data.message)
+            setError(true)
         })
         
 
         // Feche o modal após o envio bem-sucedido ou validação
-        handleClose();
+        // handleClose();
     };
 
     const handleSnackbarClose = () => {
@@ -116,6 +121,7 @@ const CadastroDialog = () => {
         setPasswordMatchErrorSnackbar(false);
         setConfirmationSnackbar(false);
         setErrorSnackbarIdade(false)
+        setError(false)
     };
 
     return (
@@ -220,6 +226,16 @@ const CadastroDialog = () => {
                     sx={{ width: '100%' }}
                 >
                     Os Campos de senha devem coincidir!
+                </Alert>
+            </Snackbar>
+            <Snackbar open={error} autoHideDuration={5000} onClose={handleSnackbarClose}>
+                <Alert
+                    onClose={handleSnackbarClose}
+                    severity="error"
+                    variant="filled"
+                    sx={{ width: '100%' }}
+                >
+                    {message}
                 </Alert>
             </Snackbar>
             <Snackbar open={confirmationSnackbar} autoHideDuration={5000} onClose={handleSnackbarClose} anchorOrigin={{vertical:'top', horizontal:'center'}}>
