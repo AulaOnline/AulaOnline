@@ -1,0 +1,45 @@
+/* style.css */
+
+/* Estilos para o componente InputView */
+.InputView-container {
+    /* Adicione estilos específicos para o container, se necessário */
+}
+
+.InputView-content {
+    /* Adicione estilos específicos para o conteúdo, se necessário */
+}
+
+.InputView-title {
+    font-family: 'Avenir', sans-serif;
+    font-weight: 800;
+}
+
+.InputView-subtitle {
+    font-size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 70px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: #BFCEDE;
+}
+
+.InputView-inputContainer {
+    display: flex;
+
+}
+
+.InputView-input {
+    width: 100vh;
+    background-color: #BFCEDE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.InputView-button {
+    width: 5%;
+    border-radius: 0px;
+}
+
+/* Estilos adicionais conforme necessário */
+

@@ -1,0 +1,19 @@
+
+.ql-toolbar.ql-snow {
+    border: 1px solid #D4D4D4;
+}
+
+    .ql-toolbar.ql-snow .ql-picker-label:hover,
+    .ql-toolbar.ql-snow .ql-picker-item:hover,
+    .ql-toolbar.ql-snow .ql-picker-label.ql-active,
+    .ql-toolbar.ql-snow .ql-picker-item.ql-selected {
+        color: #D4D4D4;
+    }
+
+    .ql-snow .ql-stroke {
+        stroke: #D4D4D4;
+    }
+
+    .ql-snow .ql-fill {
+        fill: #D4D4D4;
+    }
