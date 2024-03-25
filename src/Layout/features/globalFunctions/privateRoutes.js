@@ -2,9 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Section } from "./background";
-import { CircularProgress, Grid } from "@mui/material";
+import {CircularProgress, Grid, Typography} from "@mui/material";
+import LinearProgress from '@mui/material/LinearProgress';
+import Stack from '@mui/material/Stack';
+import {blue} from "@mui/material/colors";
 
-export function PrivateRoute( { Carregando, loading } ) {
+export function PrivateRoute( { Carregando, loading, loadingMessage } ) {
   const navigate = useNavigate();
   const [isValidToken, setIsValidToken] = useState(false);
 
@@ -60,7 +63,12 @@ export function PrivateRoute( { Carregando, loading } ) {
   return (
     <Section>
         <Grid container sx={{ minHeight: "100vh", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#BFCEDE', paddingBottom: '150px', paddingTop: '10%' }}>
-            <CircularProgress color="secondary" size={85} />
+            <Stack sx={{ width: '50%', color: 'grey.500' }} spacing={2}>
+                <LinearProgress sx={{ "& .MuiLinearProgress-bar": { backgroundColor: blue['800'] } }} />
+            </Stack>
+            {loadingMessage && (
+                <Typography sx={{ marginTop: 2, color: "white" }}>{loadingMessage}</Typography> // Renderiza a mensagem se ela existir
+            )}
         </Grid>
     </Section>
   ); 

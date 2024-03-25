@@ -63,6 +63,7 @@ export default function Questionario() {
     const navigate = useNavigate();
     const [isValidToken, setIsValidToken] = useState(false);
     const [loading, setLoading] = useState(true)
+    const cor = "#212626";
 
     function Carregando(loading) {
         setLoading(!loading)
@@ -107,7 +108,9 @@ export default function Questionario() {
 
     return (
         <>  {loading &&
-            <PrivateRoute Carregando={Carregando} loading={loading} />
+            <div>
+            <PrivateRoute Carregando={Carregando} loading={loading} loadingMessage={"Gerando Questionario"} />
+            </div>
         }
             {!loading && (
                 <Grid container>
@@ -117,6 +120,7 @@ export default function Questionario() {
                         direction="column"
                         xs={12}
                         sx={{
+                            paddingTop:"8%",
                             bgcolor: "#101824",
                             display: "flex",
                             height: "calc(100vh - 125px)",
@@ -125,18 +129,18 @@ export default function Questionario() {
                             textAlign: "center"
                         }}
                     >
-                        <Paper elevation={5} xs="12" md="12" sx={{ borderRadius: 6, bgcolor: "#101818", height: "85%", width: "55%", overflow: "auto" }}>
-                            <Grid container xs="12" md="12" direction="column" alignItems="center" sx={{ height: '100%', alignItems: "flex-start", overflow: "auto" }}>
+                        <Paper  xs="12" md="12" sx={{ borderRadius: 6, bgcolor:cor, height: "85%", width: "55%", overflow: "auto" }}>
+                            <Grid container xs="12" md="12" direction="column" alignItems="center" sx={{ height: '100%', alignItems: "flex-start", overflow: "auto", border:"2px solid #017BF7",borderRadius: 6 }}>
                                 <Box item container justifyContent="center" sx={{ borderRadius: '32px 32px 0 0', bgcolor: "#017BF7", width: "100%" }}>
                                     <Typography sx={{ fontSize: '2vw', textAlign: 'center' }}>{steps[activeStep].label}</Typography>
                                 </Box>
                                 <Grid item container sx={{ bgcolor: "#D9D9D9", height: '25%', width: '100%', p: 2 }}>
                                     <Typography sx={{ width: '100%', textAlign: 'center', fontSize: '1.4vw' }}>{steps[activeStep].question}</Typography>
                                 </Grid>:
-                                <Box sx={{ bgcolor: "#101818", width: '100%', overflow: 'auto', alignItems: 'center' }}>
-                                    <Grid container direction="column" spacing={1} sx={{ justifyContent: "center", alignItems: 'center', padding: '0px' }}>
+                                <Box sx={{ bgcolor:cor, width: '100%', overflow: 'auto'}}>
+                                    <Grid container direction="column" spacing={1} sx={{display:"flex", alignItems:"center", pt:"7%"}}>
                                         {steps[activeStep].options.map((option, index) => (
-                                            <Grid item container xs={12} md={12} sx={{ bgcolor: "#101818", width: '100%', padding: '0px' }}>
+                                            <Grid item container xs={12} md={12} sx={{ bgcolor:cor, width: '90%', padding: 'px' }}>
                                                 <Grid item xs={2} md={1}>
                                                     <Button
                                                         variant={selectedOptions[activeStep] === `option-${index}` ? 'contained' : 'outlined'}
@@ -219,7 +223,6 @@ export default function Questionario() {
                     </Dialog>
                 </Grid>
             )
-
             }
         </>
 

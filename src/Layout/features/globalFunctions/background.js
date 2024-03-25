@@ -5,8 +5,10 @@ export const Section = styled.section`
   radial-gradient(circle at 50% 50%, #0a0a0a, #0a0a0a 100%);
   width: 100%;
   background-size: 3000px 3000px;
+    padding: 0; 
+    margin: 0; 
 
-  animation: identifier 20s ease infinite;
+    animation: identifier 20s ease infinite;
 
   @keyframes identifier {
     0% {

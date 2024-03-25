@@ -67,17 +67,13 @@ export default function MeuPerfilPC() {
         <PrivateRoute Carregando={Carregando} loading={loading} />
       }
       {!loading && (
-        <Box sx={{ display: 'flex' }}>
-
+        <Box sx={{ display: 'flex'}}>
           <CssBaseline />
           <AppBar
             position="fixed"
-            sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+            sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`, backgroundColor: blue['800']}}
           >
             <Toolbar>
-              <Typography variant="h6" noWrap component="div">
-                Aula Online
-              </Typography>
             </Toolbar>
           </AppBar>
           <Drawer
@@ -93,7 +89,11 @@ export default function MeuPerfilPC() {
             variant="permanent"
             anchor="left"
           >
-            <Toolbar />
+              <Toolbar sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Typography variant="h6" noWrap component="div" sx={{ color: "white" }}>
+                      Aula Online
+                  </Typography>
+              </Toolbar>
             <Divider />
             <List>
               <ListItem component={Link} to="/" onClick={() => navigate('/')} button key="Home">
@@ -115,78 +115,36 @@ export default function MeuPerfilPC() {
                 <ListItemText primary="Meu Perfil" sx={{ color: '#f9f9f9' }} />
               </ListItem>
               <Divider />
-              <ListItem button key="Meu Histórico" onClick={() => navigate('/historico')}>
-                <ListItemIcon>
-                  <HistoryIcon sx={{ color: '#f9f9f9' }} />
-                </ListItemIcon>
-                <ListItemText primary="Meu Histórico" sx={{ color: '#f9f9f9' }} />
-              </ListItem>
-              <ListItem button key="Questionário" onClick={() => navigate('/questionario')}>
-                <ListItemIcon>
-                  <PlaylistAddCheckIcon sx={{ color: '#f9f9f9' }} />
-                </ListItemIcon>
-                <ListItemText primary="Questionário" sx={{ color: '#f9f9f9' }} />
-              </ListItem>
             </List>
           </Drawer>
           <Box
             component="main"
-            sx={{ flexGrow: 1, bgcolor: 'background.default' }}
+            sx={{ flexGrow: 1}}
           >
             <Section>
-              <Toolbar />
-              <Grid container sx={{ minHeight: "calc(100vh - 64px)", paddingTop: '20px', paddingLeft: '20px', paddingRight: '20px' }} spacing={2}>
+              <Grid container sx={{ minHeight: "calc(110vh - 64px)"}}>
+                {/* Isto é um comentário em JSX
                 {loading &&
                   <PrivateRoute Carregando={Carregando} loading={loading} />
                 }
                 {!loading && (
                   <SearchInput />
                 )}
-                <Grid container spacing={2} alignItems={'center'} justifyContent={'center'}>
-                  <Grid item xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <Button variant='contained' color='secondary' onClick={() => navigate('/Input')}>adicionar vídeo</Button>
+                */}
+                <Grid container md={12} alignItems={'center'} justifyContent={'center'}>
+                  <Grid item xs={12} md={3}>
+                    <Button variant='contained' color='primary' fullWidth={true} sx={{height:"5vh"}} onClick={() => navigate('/Input')}>adicionar vídeo</Button>
                   </Grid>
                 </Grid>
-                {/* Cards de vídeo */}
-                {/* <Grid item xs={12} md={4} lg={4} sx={{}}>
-                  <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    <VideoCard />
-                  </Box>
+                <Grid container>
+                  {videos.map(video => (
+                      <Grid item xs={12} md={4} lg={4}>
+                        <Box display="flex" flexWrap="wrap" justifyContent="space-around">
+                          <VideoCard key={video.video_id} title={video.title} link={video.video_link} />
+                        </Box>
+                      </Grid>
+                  ))}
                 </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                  <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    <VideoCard />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                  <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    <VideoCard />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                  <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    <VideoCard />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                  <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    <VideoCard />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                  <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    <VideoCard />
-                  </Box>
-                </Grid> */}
-
-                {videos.map(video => (
-                  <Grid item xs={12} md={4} lg={4}>
-                    <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    <VideoCard key={video.video_id} title={video.title} link={video.video_link} />
-                  </Box>
-                  </Grid>
-                ))}
-
             </Grid>
             <Footer sx={{ width: '100%' }} cor={'#017bf7'} />
           </Section>

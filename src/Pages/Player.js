@@ -21,7 +21,7 @@ function VideoAndChat(){
     const queryParams = new URLSearchParams(location.search);
     const linkAula = queryParams.get('linkAula');
     const [loading, setLoading] = useState(true)
-
+    const navigate = useNavigate();
     function Carregando(loading) {
       setLoading(!loading)
     }  
@@ -45,8 +45,8 @@ function VideoAndChat(){
             <Grid item xs={12} md={3.5} sx={{ height: "calc(65vh)", marginLeft:'20px'}}>
                 <Editor/>
             </Grid>
-            <Button variant="contained" sx={{ height: '5%', width: '10%', marginRight: '30px', backgroundColor: '#0CA789'}}>Gerar Questionario</Button>
-            <Button variant="contained" sx={{ height: '5%', width: '10%', backgroundColor: '#9a8c1c' }}>Gerar Resumo</Button>
+            <Button variant="contained"  sx={{ height: '5%', width: '14%', marginRight: '30px', backgroundColor: '#0CA789'}} onClick={() => navigate('/questionario')}>Gerar Questionario</Button>
+            <Button variant="contained" sx={{ height: '5%', width: '14%', backgroundColor: '#9a8c1c' }}>Gerar Resumo</Button>
         </Grid>
         )
         }

@@ -13,6 +13,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
+import {blue} from "@mui/material/colors";
 
 const Navbar = ({ name, cor }) => {
   const [menuAnchorEl, setMenuAnchorEl] = React.useState(null);
@@ -42,7 +43,7 @@ const Navbar = ({ name, cor }) => {
 
   return (
     <AppBar position="sticky">
-      <Toolbar sx={{ paddingRight: '5px', bgcolor: cor }}>
+      <Toolbar sx={{ paddingRight: '5px', bgcolor: blue['800'] }}>
         <IconButton
           size="large"
           edge="start"
