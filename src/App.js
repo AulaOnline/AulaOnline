@@ -8,7 +8,7 @@ import Player from "./Pages/Player";
 import Quintal from "./Pages/quintal";
 import Questionario from "./Pages/Questionario";
 import Questionario2 from './Pages/teste';
-
+export const URL = "Algum texto aqui";
 
 function App() {
   return (
