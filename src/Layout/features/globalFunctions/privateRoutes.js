@@ -15,7 +15,7 @@ export function PrivateRoute( { Carregando, loading, loadingMessage } ) {
   useEffect(() => {
     // Verifica se há um token no localStorage
     const token = localStorage.getItem("token");
-    console.log("Token:", token);
+    //console.log("Token:", token);
     if (token) {
       // Faz uma requisição para verificar se o token é válido
       axios
@@ -29,7 +29,7 @@ export function PrivateRoute( { Carregando, loading, loadingMessage } ) {
           }
         )
         .then((response) => {
-          console.log("Resposta da verificação de token:", response.data);
+         // console.log("Resposta da verificação de token:", response.data);
           const { success } = response.data;
           if (success) {
             setTimeout(() => {

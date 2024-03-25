@@ -45,7 +45,7 @@ function VideoAndChat(){
             <Grid item xs={12} md={3.5} sx={{ height: "calc(65vh)", marginLeft:'20px'}}>
                 <Editor/>
             </Grid>
-            <Button variant="contained"  sx={{ height: '5%', width: '14%', marginRight: '30px', backgroundColor: '#0CA789'}} onClick={() => navigate('/questionario')}>Gerar Questionario</Button>
+            <Button variant="contained"  sx={{ height: '5%', width: '14%', marginRight: '30px', backgroundColor: '#0CA789'}} onClick={() => navigate(`/questionario?linkAula=${encodeURI(linkAula)}`)}>Gerar Questionario</Button>
             <Button variant="contained" sx={{ height: '5%', width: '14%', backgroundColor: '#9a8c1c' }}>Gerar Resumo</Button>
         </Grid>
         )
@@ -63,7 +63,7 @@ function Player() {
     useEffect(() => {
         // Verifica se há um token no localStorage
         const token = localStorage.getItem('token');
-        console.log('Token:', token);
+        //console.log('Token:', token);
         if (token) {
             // Faz uma requisição para verificar se o token é válido
             axios.post('http://localhost:3001/login/verificar-token', { token }, {
@@ -72,7 +72,7 @@ function Player() {
                 }
             })
             .then((response) => {
-                console.log('Resposta da verificação de token:', response.data);
+                //console.log('Resposta da verificação de token:', response.data);
                 const { success } = response.data;
                 if (success) {
                     // Se o token for válido, define isValidToken como true
