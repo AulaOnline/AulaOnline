@@ -20,7 +20,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { PrivateRoute } from '../Layout/features/globalFunctions/privateRoutes';
 import {ExtrairTkenEretornarID} from "../Layout/features/globalFunctions/pegarusername";
-import { URL } from '../App';
+
+import {API_URL} from "../App";
+
 
 let steps = [
     {
@@ -76,7 +78,9 @@ export default function Questionario() {
         setloadingQuestions(true);
         const fetchQuestions = async () => {
             try {
-                const response = await axios.post(`${URL}/generate/generateQuestion`, {
+
+                const response = await axios.post(`${API_URL}/generate/generateQuestion`, {
+
                     videoLink: linkAula
                 });
                 const questionsData = response.data.data;

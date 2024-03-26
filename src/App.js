@@ -8,7 +8,9 @@ import Player from "./Pages/Player";
 import Quintal from "./Pages/quintal";
 import Questionario from "./Pages/Questionario";
 import Questionario2 from './Pages/teste';
-export const URL = `https://aulaonline.onrender.com`;
+
+export const API_URL = 'https://c791-2804-14d-12a8-800f-d888-c8f4-427f-986d.ngrok-free.app';
+
 
 function App() {
   return (
