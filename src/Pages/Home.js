@@ -34,9 +34,7 @@ function Home() {
             .then((response) => {
                 const { statusCode, data } = response.data;
                 if (statusCode === 200) {
-                    // Se a resposta for 200, armazene o token no localStorage
                     localStorage.setItem('token', data.token);
-                    // Redirecione para a página de perfil
                     navigate('/meuperfil');
                 } else {
                     setErrorMessage('Erro Interno, contate o adiministrador');
