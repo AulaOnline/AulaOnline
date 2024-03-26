@@ -15,6 +15,7 @@ import CakeIcon from '@mui/icons-material/Cake';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import axios from 'axios'
+import { URL } from '../../../App';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} timeout={{ enter: 800, exit: 800 }} />;
@@ -59,10 +60,10 @@ const CadastroDialog = () => {
 
     const handleSubmit = () => {
         // Verifica idade não negativa
-        if (parseInt(formData.idade) < 0) {
-            setErrorSnackbarIdade(true);
-            return;
-        }
+        // if (parseInt(formData.idade) < 0) {
+        //     setErrorSnackbarIdade(true);
+        //     return;
+        // }
 
         // campos preenchidos
         if (
@@ -83,7 +84,7 @@ const CadastroDialog = () => {
 
 
         // Adicione lógica de envio ou validação aqui
-        const url = 'http://localhost:3001/login/createUser'
+        const url = `${URL}/login/createUser`
 
         const headers = {
             headers: {
