@@ -8,7 +8,7 @@ import CadastroDialog from '../Layout/features/Login/CadastroDialog'
 import EsqueciMinhaSenha from '../Layout/features/Login/EsqueciMinhaSenha';
 import { useNavigate } from 'react-router';
 import axios from 'axios'
-import { API_URL } from '../App'
+import {URL} from "../App";
 
 function Home() {
     const [email, setEmail] = useState('');
@@ -20,8 +20,7 @@ function Home() {
 
     const handleLogin = () => {
         // Lógica de login aqui, por exemplo, enviar os dados para um servidor
-        const url = `${API_URL}/login/checkCredentials`
-        let resposta
+        const url = "https://aulaonline.onrender.com/login/checkCredentials"
         const data = {
             username: email,
             password: password
@@ -35,9 +34,7 @@ function Home() {
             .then((response) => {
                 const { statusCode, data } = response.data;
                 if (statusCode === 200) {
-                    // Se a resposta for 200, armazene o token no localStorage
                     localStorage.setItem('token', data.token);
-                    // Redirecione para a página de perfil
                     navigate('/meuperfil');
                 } else {
                     setErrorMessage('Erro Interno, contate o adiministrador');
