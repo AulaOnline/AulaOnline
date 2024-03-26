@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { PrivateRoute } from '../Layout/features/globalFunctions/privateRoutes';
+import {API_URL} from "../App";
 
 const StyledSection = styled.section`
   background-color: #101824;
@@ -132,7 +133,7 @@ function Player() {
         console.log('Token:', token);
         if (token) {
             // Faz uma requisição para verificar se o token é válido
-            axios.post('http://localhost:3001/login/verificar-token', { token }, {
+            axios.post(`${API_URL}/login/verificar-token`, { token }, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
