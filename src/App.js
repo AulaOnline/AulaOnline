@@ -9,7 +9,7 @@ import Quintal from "./Pages/quintal";
 import Questionario from "./Pages/Questionario";
 import Questionario2 from './Pages/teste';
 
-export const API_URL = 'https://c791-2804-14d-12a8-800f-d888-c8f4-427f-986d.ngrok-free.app';
+export const API_URL = 'https://655b-2804-29b8-5132-3a5-cc95-a802-caf9-7a7e.ngrok-free.app';
 
 
 function App() {
