@@ -1,4 +1,4 @@
-// InputView.js
+
 import { Button, Grid, TextField, Typography, Snackbar, Alert } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -20,6 +20,8 @@ function InputView() {
   const handleButtonClick = async () => {
     try {
       const id = await ExtrairTkenEretornarID();
+      console.log(id);
+
       if (id) {
         const response = await axios.post(`${API_URL}/video/postNewVideo/${id}`, {
           video_link: linkAula
@@ -42,38 +44,38 @@ function InputView() {
   };
 
   return (
-    <Grid container>
-      <Navbar cor={'black'} />
-      <Section className="InputView-container"> {/* Adicione a classe do CSS */}
-        <Grid container sx={{ height: "calc(100vh - 94px)", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#BFCEDE', paddingBottom: '150px', paddingTop: '10%' }}>
-          <Grid item md={9} className="InputView-content">
-            <Typography className="InputView-title" variant="h1" component="h1">
-              Otimizando O aprendizado
-            </Typography>
-            <Typography className="InputView-subtitle" variant="h1" component="h1">
-              Ao Nível Máximo...
-            </Typography>
-            <Grid item className="InputView-inputContainer">
-              <TextField className="InputView-input" id="outlined-basic" label="Insira o link da sua aula" variant="filled" onChange={(e) => SetLinkAula(e.target.value)} />
-              <Button variant="contained" size={"large"} onClick={handleButtonClick} className="InputView-button">
-                &gt;
-              </Button>
+      <Grid container>
+        <Navbar cor={'black'} />
+        <Section className="InputView-container"> {/* Adicione a classe do CSS */}
+          <Grid container sx={{ height: "calc(100vh - 94px)", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#BFCEDE', paddingBottom: '150px', paddingTop: '10%' }}>
+            <Grid item md={9} className="InputView-content">
+              <Typography className="InputView-title" variant="h1" component="h1">
+                Otimizando O aprendizado
+              </Typography>
+              <Typography className="InputView-subtitle" variant="h1" component="h1">
+                Ao Nível Máximo...
+              </Typography>
+              <Grid item className="InputView-inputContainer">
+                <TextField className="InputView-input" id="outlined-basic" label="Insira o link da sua aula" variant="filled" onChange={(e) => SetLinkAula(e.target.value)} />
+                <Button variant="contained" size={"large"} onClick={handleButtonClick} className="InputView-button">
+                  &gt;
+                </Button>
+              </Grid>
             </Grid>
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={5000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+              <Alert onClose={handleCloseSnackbar} severity="error" sx={{ width: '100%' }}>
+                {errorMessage}
+              </Alert>
+            </Snackbar>
           </Grid>
-          <Snackbar
-            open={openSnackbar}
-            autoHideDuration={5000}
-            onClose={handleCloseSnackbar}
-            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-          >
-            <Alert onClose={handleCloseSnackbar} severity="error" sx={{ width: '100%' }}>
-              {errorMessage}
-            </Alert>
-          </Snackbar>
-        </Grid>
-      </Section>
-      <Footer cor={'black'} />
-    </Grid>
+        </Section>
+        <Footer cor={'black'} />
+      </Grid>
   )
 }
 
