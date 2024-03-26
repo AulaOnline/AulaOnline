@@ -40,7 +40,7 @@ function VideoAndChat() {
             if (getResumo) {
                 try {
                     console.log(linkAula)
-                    const response = await axios.post('http://localhost:3001/generate/generateSummary', {
+                    const response = await axios.post(`${API_URL}/generate/generateSummary`, {
                         videoLink: linkAula
                     })
                     setDisabled(true)
@@ -106,12 +106,12 @@ function VideoAndChat() {
                     <Grid container xs={12} md={4} sx={{padding:'20px'}}>
                         <Grid item md={6}> 
 
-                        <Button variant="contained"  sx={{ height: '5%', width: '14%', marginRight: '30px', backgroundColor: '#0CA789'}} onClick={() => navigate(`/questionario?linkAula=${encodeURI(linkAula)}`)}>
+                        <Button variant="contained"  sx={{ height: '40%', width: '100%', marginRight: '30px', backgroundColor: '#0CA789'}} onClick={() => navigate(`/questionario?linkAula=${encodeURI(linkAula)}`)}>
                             Gerar Questionario</Button>
                         </Grid>
                         <Grid item md={6}> 
 
-                        <Button variant="contained" sx={{ backgroundColor: '#9a8c1c' }} onClick={handleGerarResumo} disabled={disabled}>Gerar Resumo</Button>
+                        <Button variant="contained" sx={{  height: '40%', width: '100%', backgroundColor: '#9a8c1c' }} onClick={handleGerarResumo} disabled={disabled}>Gerar Resumo</Button>
                         </Grid>
                     </Grid>
                 </Grid >
