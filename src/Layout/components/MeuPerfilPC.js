@@ -27,7 +27,7 @@ import VideoCard from '../features/VideoCards/VideoCard.js';
 import { ExtrairTkenEretornarID } from '../features/globalFunctions/pegarusername.js'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { URL } from '../../App'
+import { API_URL } from '../../App'
 
 const drawerWidth = 240;
 
@@ -45,7 +45,7 @@ export default function MeuPerfilPC() {
       if (id) {
         const fetchVideos = async () => {
           try {
-            const response = await axios.get(`${URL}/video/getVideosOfUser/${id}`);
+            const response = await axios.get(`${API_URL}/video/getVideosOfUser/${id}`);
             console.log(response.data);
             setVideos(response.data.data)
           }

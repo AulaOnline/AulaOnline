@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL } from "../../../App";
+import {API_URL, URL} from "../../../App";
 
 export async function ExtrairTkenEretornarID () {
     // Extrair o token do localStorage
@@ -18,7 +18,7 @@ export async function ExtrairTkenEretornarID () {
 
         try {
             // Fazer a solicitação HTTP para obter o ID do usuário
-            const response = await axios.get(`${URL}/login/getUserID/${username}`);
+            const response = await axios.get(`${API_URL}/login/getUserID/${username}`);
             
             // A resposta da solicitação HTTP estará disponível aqui
             return response.data.data.id

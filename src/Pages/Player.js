@@ -53,7 +53,7 @@ function VideoAndChat() {
                             setResumo(response.data.data.summary);
                             getResumo(true)
                         } else {
-                            // Caso ja exista: 
+                            // Caso ja exista:
                             setResumo(response.data.data);
                             getResumo(true)
                         }
@@ -87,7 +87,7 @@ function VideoAndChat() {
                     <Grid item xs={12} md={3} sx={{ minHeight: "calc(65vh)", marginLeft: '20px' }}>
                         <Editor />
                     </Grid>
-                    { 
+                    {
                         getResumo && (
                         <Grid item xs={12} md={8} sx={{ padding: '20px' }}>
                         <Box
@@ -106,12 +106,12 @@ function VideoAndChat() {
                     )}
 
                     <Grid container xs={12} md={4} sx={{padding:'20px'}}>
-                        <Grid item md={6}> 
+                        <Grid item md={6}>
 
                         <Button variant="contained"  sx={{ height: '5%', width: '14%', marginRight: '30px', backgroundColor: '#0CA789'}} onClick={() => navigate(`/questionario?linkAula=${encodeURI(linkAula)}`)}>
                             Gerar Questionario</Button>
                         </Grid>
-                        <Grid item md={6}> 
+                        <Grid item md={6}>
 
                         <Button variant="contained" sx={{ backgroundColor: '#9a8c1c' }} onClick={handleGerarResumo} disabled={disabled}>Gerar Resumo</Button>
                         </Grid>
@@ -137,9 +137,7 @@ function Player() {
             // Faz uma requisição para verificar se o token é válido
 
             axios.post(`${API_URL}/login/verificar-token`, { token }, {
-
                     'Content-Type': 'application/json'
-                }
             })
                 .then((response) => {
                     console.log('Resposta da verificação de token:', response.data);

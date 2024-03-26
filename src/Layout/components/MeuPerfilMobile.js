@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { PrivateRoute } from '../features/globalFunctions/privateRoutes.js';
 import { ExtrairTkenEretornarID } from '../features/globalFunctions/pegarusername.js';
-import { URL } from '../../App.js';
+import {API_URL} from '../../App.js';
 
 function MeuPerfil() {
 
@@ -26,7 +26,7 @@ function MeuPerfil() {
       if (id) {
         const fetchVideos = async () => {
           try {
-            const response = await axios.get(`${URL}/video/getVideosOfUser/${id}`);
+            const response = await axios.get(`${API_URL}/video/getVideosOfUser/${id}`);
             console.log(response.data);
             setVideos(response.data.data)
           }
