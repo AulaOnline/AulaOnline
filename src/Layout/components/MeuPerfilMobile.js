@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { PrivateRoute } from '../features/globalFunctions/privateRoutes.js';
 import { ExtrairTkenEretornarID } from '../features/globalFunctions/pegarusername.js';
-import { URL } from '../../App.js';
+import { API_URL } from '../../App.js';
 
 function MeuPerfil() {
 

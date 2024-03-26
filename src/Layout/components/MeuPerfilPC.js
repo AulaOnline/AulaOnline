@@ -27,7 +27,7 @@ import VideoCard from '../features/VideoCards/VideoCard.js';
 import { ExtrairTkenEretornarID } from '../features/globalFunctions/pegarusername.js'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { URL } from '../../App'
+import { API_URL } from '../../App'
 
 const drawerWidth = 240;
 

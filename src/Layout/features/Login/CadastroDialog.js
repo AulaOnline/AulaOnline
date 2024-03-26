@@ -15,7 +15,7 @@ import CakeIcon from '@mui/icons-material/Cake';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import axios from 'axios'
-import { URL } from '../../../App';
+import { API_URL } from '../../../App';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} timeout={{ enter: 800, exit: 800 }} />;
