@@ -8,7 +8,7 @@ import CadastroDialog from '../Layout/features/Login/CadastroDialog'
 import EsqueciMinhaSenha from '../Layout/features/Login/EsqueciMinhaSenha';
 import { useNavigate } from 'react-router';
 import axios from 'axios'
-import {URL} from "../App";
+import {API_URL, URL} from "../App";
 
 function Home() {
     const [email, setEmail] = useState('');
@@ -20,7 +20,7 @@ function Home() {
 
     const handleLogin = () => {
         // Lógica de login aqui, por exemplo, enviar os dados para um servidor
-        const url = "https://aulaonline.onrender.com/login/checkCredentials"
+        const url = `${API_URL}/login/checkCredentials`
         const data = {
             username: email,
             password: password

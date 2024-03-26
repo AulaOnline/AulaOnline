@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_URL, URL} from "../../../App";
+import {API_URL} from "../../../App";
 
 export async function ExtrairTkenEretornarID () {
     // Extrair o token do localStorage

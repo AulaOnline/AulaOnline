@@ -6,7 +6,7 @@ import {CircularProgress, Grid, Typography} from "@mui/material";
 import LinearProgress from '@mui/material/LinearProgress';
 import Stack from '@mui/material/Stack';
 import {blue} from "@mui/material/colors";
-import {API_URL} from '../../../App';
+import { API_URL } from '../../../App';
 export function PrivateRoute( { Carregando, loading, loadingMessage } ) {
   const navigate = useNavigate();
   const [isValidToken, setIsValidToken] = useState(false);
