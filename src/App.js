@@ -8,7 +8,7 @@ import Player from "./Pages/Player";
 import Quintal from "./Pages/quintal";
 import Questionario from "./Pages/Questionario";
 import Questionario2 from './Pages/teste';
-export const URL = "Algum texto aqui";
+export const URL = `https://aulaonline.onrender.com`;
 
 function App() {
   return (
