@@ -15,12 +15,13 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Grid } from '@mui/material';
 import Navbar from '../Layout/components/Navbar';
 import Footer from '../Layout/components/Footer';
-import { useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { PrivateRoute } from '../Layout/features/globalFunctions/privateRoutes';
+import {ExtrairTkenEretornarID} from "../Layout/features/globalFunctions/pegarusername";
 
-const steps = [
+let steps = [
     {
         label: 'Questão 1',
         question: 'Qual é a capital do Brasil?',
@@ -57,17 +58,44 @@ const steps = [
         answer: 'B'
     },
 ];
-
 export default function Questionario() {
 
-    const navigate = useNavigate();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const linkAula = queryParams.get('linkAula');
     const [isValidToken, setIsValidToken] = useState(false);
     const [loading, setLoading] = useState(true)
+    const [loadingQuestions, setloadingQuestions] = useState(false);
     const cor = "#212626";
 
     function Carregando(loading) {
         setLoading(!loading)
     }
+    useEffect(() => {
+        setloadingQuestions(true);
+        const fetchQuestions = async () => {
+            try {
+                const response = await axios.post(`http://localhost:3001/generate/generateQuestion`, {
+                    videoLink: linkAula
+                });
+                const questionsData = response.data.data;
+                Object.keys(questionsData).forEach((key, index) => {
+                    if (steps[index]) {
+                        const questionData = questionsData[key];
+                        steps[index].question = questionData.statement;
+                        steps[index].alternatives = Object.values(questionData.alternatives);
+                        steps[index].options = Object.keys(questionData.alternatives);
+                        steps[index].answer = questionData.correctAnswer;
+                    }
+                });
+                setloadingQuestions(false);
+            } catch (error) {
+                console.log(error.response ? error.response.data : "An error occurred");
+            }
+        };
+        fetchQuestions();
+    }, []);
+
 
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
@@ -107,12 +135,12 @@ export default function Questionario() {
     const maxSteps = steps.length;
 
     return (
-        <>  {loading &&
+        <>  {(loading || loadingQuestions) &&
             <div>
             <PrivateRoute Carregando={Carregando} loading={loading} loadingMessage={"Gerando Questionario"} />
             </div>
         }
-            {!loading && (
+            {!loading && !loadingQuestions &&(
                 <Grid container>
                     <Navbar />
                     <Grid

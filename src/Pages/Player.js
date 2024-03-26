@@ -64,6 +64,47 @@ function VideoAndChat() {
         FetchResumo()
     }, [getResumo])
 
+        setLoading(!loading)
+    }
+
+    const [resumo, setResumo] = useState('')
+    const [getResumo, setGetResumo] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+
+    const handleGerarResumo = () => {
+        setGetResumo(true)
+    }
+
+    useEffect(() => {
+        const FetchResumo = async () => {
+            if (getResumo) {
+                try {
+                    console.log(linkAula)
+                    const response = await axios.post('http://localhost:3001/generate/generateSummary', {
+                        videoLink: linkAula
+                    })
+                    setDisabled(true)
+                    if (response.data.data) {
+                        // Verifica se response.data.data existe
+                        if (response.data.data.summary) {
+                            // Se summary nao existir previamente.
+                            setResumo(response.data.data.summary);
+                            getResumo(true)
+                        } else {
+                            // Caso ja exista: 
+                            setResumo(response.data.data);
+                            getResumo(true)
+                        }
+                    }
+                }
+                catch (error) {
+                    console.error(error)
+                }
+            }
+        }
+        FetchResumo()
+    }, [getResumo])
+
 
     return (
         <>
@@ -152,6 +193,22 @@ function Player() {
                     // Em caso de erro na requisição, redireciona para a página inicial
                     navigate('/');
                 });
+                .then((response) => {
+                    console.log('Resposta da verificação de token:', response.data);
+                    const { success } = response.data;
+                    if (success) {
+                        // Se o token for válido, define isValidToken como true
+                        setIsValidToken(true);
+                    } else {
+                        // Se o token não for válido, redireciona para a página inicial
+                        navigate('/');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Erro ao verificar o token:', error);
+                    // Em caso de erro na requisição, redireciona para a página inicial
+                    navigate('/');
+                });
         } else {
             // Se não houver token no localStorage, redireciona para a página inicial
             navigate('/');
@@ -160,6 +217,9 @@ function Player() {
 
     return (
         <StyledSection>
+            <Navbar />
+            <VideoAndChat />
+            <Footer cor={'#017BF7'} />
             <Navbar />
             <VideoAndChat />
             <Footer cor={'#017BF7'} />
