@@ -23,7 +23,7 @@ function InputView() {
       console.log(id);
 
       if (id) {
-        const response = await axios.post(`${API_URL}/video/postNewVideo/${id}`, {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/video/postNewVideo/${id}`, {
           video_link: linkAula
         });
         console.log('Novo vídeo postado:', response.data);

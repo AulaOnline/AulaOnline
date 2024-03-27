@@ -9,7 +9,7 @@ import Quintal from "./Pages/quintal";
 import Questionario from "./Pages/Questionario";
 import Questionario2 from './Pages/teste';
 
-export const API_URL = 'https://ffca-23-175-192-248.ngrok-free.app';
+//export const API_URL = 'https://ffca-23-175-192-248.ngrok-free.app';
 
 
 function App() {

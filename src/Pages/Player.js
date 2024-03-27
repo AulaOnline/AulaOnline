@@ -42,7 +42,7 @@ function VideoAndChat() {
             if (getResumo) {
                 try {
                     console.log(linkAula)
-                    const response = await axios.post(`${URL}/generate/generateSummary`, {
+                    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/generate/generateSummary`, {
                         videoLink: linkAula
                     })
                     setDisabled(true)
@@ -136,7 +136,7 @@ function Player() {
         if (token) {
             // Faz uma requisição para verificar se o token é válido
 
-            axios.post(`${API_URL}/login/verificar-token`, { token }, {
+            axios.post(`${process.env.REACT_APP_BACKEND_URL}/login/verificar-token`, { token }, {
                     'Content-Type': 'application/json'
             })
                 .then((response) => {

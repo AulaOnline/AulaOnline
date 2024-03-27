@@ -84,7 +84,7 @@ const CadastroDialog = () => {
 
 
         // Adicione lógica de envio ou validação aqui
-        const url = `${API_URL}/login/createUser`
+        const url = `${process.env.REACT_APP_BACKEND_URL}/login/createUser`
 
         const headers = {
             headers: {

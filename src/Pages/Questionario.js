@@ -79,7 +79,7 @@ export default function Questionario() {
         const fetchQuestions = async () => {
             try {
 
-                const response = await axios.post(`${API_URL}/generate/generateQuestion`, {
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/generate/generateQuestion`, {
 
                     videoLink: linkAula
                 });

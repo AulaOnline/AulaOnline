@@ -20,7 +20,7 @@ export function PrivateRoute( { Carregando, loading, loadingMessage } ) {
       // Faz uma requisição para verificar se o token é válido
       axios
         .post(
-          `${API_URL}/login/verificar-token`,
+          `${process.env.REACT_APP_BACKEND_URL}/login/verificar-token`,
           { token },
           {
             headers: {

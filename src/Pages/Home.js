@@ -20,7 +20,7 @@ function Home() {
 
     const handleLogin = () => {
         // Lógica de login aqui, por exemplo, enviar os dados para um servidor
-        const url = `${API_URL}/login/checkCredentials`
+        const url = `${process.env.REACT_APP_BACKEND_URL}/login/checkCredentials`
         const data = {
             username: email,
             password: password
