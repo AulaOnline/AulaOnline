@@ -24,6 +24,7 @@ function VideoAndChat() {
     const linkAula = queryParams.get('linkAula');
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate();
+    const [editorContent, setEditorContent] = useState("");
     function Carregando(loading) {
         setLoading(!loading)
     }
@@ -32,22 +33,23 @@ function VideoAndChat() {
     const [getResumo, setGetResumo] = useState(false)
     const [disabled, setDisabled] = useState(false)
 
-    const handleSaveNotation = async (body) => {
+    const handleSaveNotation = async () => {
+
         ExtrairTkenEretornarID().then(id => {
             if (id) {
-                const fetchVideos = async () => {
+                const fetcNotation = async () => {
                     try {
-                        const response = await axios.post(`${API_URL}/annotation/postNewNotation/${id}`,{
+                       await axios.post(`${API_URL}/annotation/postNewNotation/${id}`,{
                             "title": "Anotacao Sobre o Video",
-                            "body": body,
-                            "videoLink": linkAula
+                            "body": editorContent,
+                             "videoLink": linkAula
                         });
                     }
                     catch (error){
                         return error;
                     }
                 };
-                fetchVideos();
+                fetcNotation();
             }
         }).catch(error => {
             console.error('Erro ao extrair o ID do usuário:', error);
@@ -55,6 +57,11 @@ function VideoAndChat() {
     }
     const handleGerarResumo = () => {
         setGetResumo(true)
+    }
+
+    const handleEditorChange = (content) => {
+        setEditorContent(content);
+        console.log(editorContent);
     }
 
     useEffect(() => {
@@ -105,7 +112,7 @@ function VideoAndChat() {
                         />
                     </Grid>
                     <Grid item xs={12} md={3.75} sx={{marginLeft: '20px' }}>
-                        <Editor />
+                        <Editor onChange={handleEditorChange} />
                         <Button variant="contained" sx={{ width: '100%',height:"40px",backgroundColor: '#0886b4'}} onClick={handleSaveNotation}>Salvar</Button>
                     </Grid>
                     <Grid container xs={12} md={3} sx={{height: "5.5vh",paddingTop:"20px"}}>

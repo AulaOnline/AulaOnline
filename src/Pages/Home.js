@@ -8,7 +8,7 @@ import CadastroDialog from '../Layout/features/Login/CadastroDialog'
 import EsqueciMinhaSenha from '../Layout/features/Login/EsqueciMinhaSenha';
 import { useNavigate } from 'react-router';
 import axios from 'axios'
-import {API_URL, URL} from "../App";
+import {API_URL} from "../App";
 
 function Home() {
     const [email, setEmail] = useState('');
