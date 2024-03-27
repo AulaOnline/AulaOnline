@@ -29,8 +29,7 @@ const MediaCard = ({title, link}) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" onClick={handleLinkClick}>Ir ao Video</Button>
-                {/* <Button size="small">Learn More</Button> */}
+                <Button size="small" variant="outlined" onClick={handleLinkClick}>Ir ao Video</Button>
             </CardActions>
         </Card>
     );

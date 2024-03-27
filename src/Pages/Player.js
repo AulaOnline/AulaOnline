@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { PrivateRoute } from '../Layout/features/globalFunctions/privateRoutes';
 import {API_URL} from "../App";
+import {ExtrairTkenEretornarID} from "../Layout/features/globalFunctions/pegarusername";
 
 const StyledSection = styled.section`
   background-color: #101824;
@@ -31,6 +32,27 @@ function VideoAndChat() {
     const [getResumo, setGetResumo] = useState(false)
     const [disabled, setDisabled] = useState(false)
 
+    const handleSaveNotation = async (body) => {
+        ExtrairTkenEretornarID().then(id => {
+            if (id) {
+                const fetchVideos = async () => {
+                    try {
+                        const response = await axios.post(`${API_URL}/annotation/postNewNotation/${id}`,{
+                            "title": "Anotacao Sobre o Video",
+                            "body": "body",
+                            "videoLink": linkAula
+                        });
+                    }
+                    catch (error){
+                        return error;
+                    }
+                };
+                fetchVideos();
+            }
+        }).catch(error => {
+            console.error('Erro ao extrair o ID do usuário:', error);
+        });
+    }
     const handleGerarResumo = () => {
         setGetResumo(true)
     }
@@ -84,6 +106,7 @@ function VideoAndChat() {
                     </Grid>
                     <Grid item xs={12} md={3.75} sx={{marginLeft: '20px' }}>
                         <Editor />
+                        <Button variant="contained" sx={{ width: '100%',height:"40px",backgroundColor: '#0886b4'}} onClick={handleSaveNotation}>Salvar</Button>
                     </Grid>
                     <Grid container xs={12} md={3} sx={{height: "5.5vh",paddingTop:"20px"}}>
                         <Grid item md={6}>
@@ -118,7 +141,6 @@ function VideoAndChat() {
                                 </Box>
                             </Grid>
                             </Grid>
-
                         )}
                 </Grid >
             )

@@ -28,6 +28,8 @@ import { ExtrairTkenEretornarID } from '../features/globalFunctions/pegarusernam
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../App'
+import EsqueciMinhaSenha from "../features/Login/EsqueciMinhaSenha";
+import ModalHistorico from "./modalHistorico";
 
 const drawerWidth = 240;
 
@@ -35,6 +37,7 @@ export default function MeuPerfilPC() {
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(true);
   const [videos, setVideos] = useState([])
+  const [userID, setUserID] = useState('');
 
   function Carregando(loading) {
     setLoading(!loading);
@@ -45,6 +48,7 @@ export default function MeuPerfilPC() {
       if (id) {
         const fetchVideos = async () => {
           try {
+            setUserID(id);
             const response = await axios.get(`${API_URL}/video/getVideosOfUser/${id}`);
             console.log(response.data);
             setVideos(response.data.data)
@@ -124,24 +128,17 @@ export default function MeuPerfilPC() {
           >
             <Section>
               <Grid container sx={{ minHeight: "calc(110vh - 64px)"}}>
-                {/* Isto é um comentário em JSX
-                {loading &&
-                  <PrivateRoute Carregando={Carregando} loading={loading} />
-                }
-                {!loading && (
-                  <SearchInput />
-                )}
-                */}
                 <Grid container md={12} alignItems={'center'} justifyContent={'center'}>
                   <Grid item xs={12} md={3}>
                     <Button variant='contained' color='primary' fullWidth={true} sx={{height:"5vh"}} onClick={() => navigate('/Input')}>adicionar vídeo</Button>
                   </Grid>
                 </Grid>
                 <Grid container>
-                  {videos.map(video => (
-                      <Grid item xs={12} md={4} lg={4}>
-                        <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                          <VideoCard key={video.video_id} title={video.title} link={video.video_link} />
+                  {videos.map((video) => (
+                      <Grid item xs={12} md={4} lg={4} key={video.video_id}> {/* Move a chave para aqui */}
+                        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" flexWrap="wrap">
+                          <VideoCard title={video.title} link={video.video_link} />
+                          <ModalHistorico userID={userID} videoLink={video.video_link}/>
                         </Box>
                       </Grid>
                   ))}

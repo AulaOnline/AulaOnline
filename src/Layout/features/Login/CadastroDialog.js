@@ -59,13 +59,6 @@ const CadastroDialog = () => {
     };
 
     const handleSubmit = () => {
-        // Verifica idade não negativa
-        // if (parseInt(formData.idade) < 0) {
-        //     setErrorSnackbarIdade(true);
-        //     return;
-        // }
-
-        // campos preenchidos
         if (
             formData.nome.trim() === '' ||
             formData.email.trim() === '' ||
