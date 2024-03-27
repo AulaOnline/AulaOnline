@@ -64,12 +64,14 @@ let steps = [
 export default function Questionario() {
 
     const location = useLocation();
+    const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
     const linkAula = queryParams.get('linkAula');
     const [isValidToken, setIsValidToken] = useState(false);
     const [loading, setLoading] = useState(true)
     const [loadingQuestions, setloadingQuestions] = useState(false);
     const cor = "#212626";
+    const CorrectAnswers = [0, 0, 0, 0, 0];
 
     function Carregando(loading) {
         setLoading(!loading)
@@ -132,6 +134,9 @@ export default function Questionario() {
     const calculateCorrectAnswers = () => {
         return selectedOptions.reduce((count, selectedOption, index) => {
             const correctAnswer = `option-${steps[index].options.indexOf(steps[index].answer)}`;
+            if (selectedOption === correctAnswer)
+                CorrectAnswers[index] = 1;
+
             return count + (selectedOption === correctAnswer ? 1 : 0);
         }, 0);
     };
@@ -243,15 +248,83 @@ export default function Questionario() {
                         </Grid>
                     </Grid>
                     <Footer cor={'#017BF7'} />
-                    <Dialog open={openDialog} onClose={handleCloseDialog}>
+                    <Dialog open={openDialog} onClose={handleCloseDialog} sx={{
+                        '& .MuiDialog-paper': {
+                            width: '60%',
+                            maxWidth: 'none',
+                            height: 'auto', // Ajuste para 'auto' para acomodar o conteúdo
+                            border: "3px solid #017BF7",
+                        },
+                    }}>
                         <DialogTitle>Resultado</DialogTitle>
                         <DialogContent>
-                            <DialogContentText>
-                                {`Você acertou ${correctAnswers} de ${steps.length} perguntas!`}
-                            </DialogContentText>
+                            <Grid container spacing={2}>
+                                {CorrectAnswers.map((answer, index) => (
+                                    <Grid item xs={12} key={index} display="flex" justifyContent="center">
+                                        {answer === 1 ? (
+                                            <Grid container justifyContent="center" alignItems="center" padding={"25px"}>
+                                                <Grid item xs={12}>
+                                                    <span style={{
+                                                        fontWeight: 'bold',
+                                                        color: "#5f5f5f",
+                                                        fontSize: '20px'
+                                                    }}>{steps[index].label}:<br/></span>
+                                                    <Button variant="outlined" sx={{
+                                                        width: "100%",
+                                                        height: '10vh',
+                                                        color: 'white',
+                                                        backgroundColor: "#2AD761FF"
+                                                    }}>
+                                                        {steps[index].question}
+                                                    </Button>
+                                                </Grid>
+                                                {steps[index].alternatives.map((alternative, altIndex) => (
+                                                    <Grid item xs={12} key={altIndex}>
+                                                        <Button variant="outlined" sx={{ width: "100%", height: '5vh', color: 'gray', backgroundColor: steps[index].options[altIndex] === steps[index].answer ? "#2AD761FF" : "#eae6e5" }}>
+                                                            {alternative}
+                                                        </Button>
+                                                    </Grid>
+                                                ))}
+                                            </Grid>
+                                        ) : (
+                                            <Grid container justifyContent="center" alignItems="center" padding={"25px"}>
+                                                <Grid item xs={12}>
+                                                    <span style={{
+                                                        fontWeight: 'bold',
+                                                        color: "#5f5f5f",
+                                                        fontSize: '20px'
+                                                    }}>{steps[index].label}:<br/></span>
+                                                    <Button variant="outlined" sx={{
+                                                        width: "100%",
+                                                        height: '10vh',
+                                                        color: 'white',
+                                                        backgroundColor: "#b03939"
+                                                    }}>
+                                                        {steps[index].question}
+                                                    </Button>
+                                                </Grid>
+                                                {steps[index].alternatives.map((alternative, altIndex) => (
+                                                    <Grid item xs={12} key={altIndex}>
+                                                        <Button variant="outlined" sx={{ width: "100%", height: '5vh', color: 'gray', backgroundColor: steps[index].options[altIndex] === steps[index].answer ? "#2AD761FF" : "#eae6e5" }}>
+                                                            {alternative}
+                                                        </Button>
+                                                    </Grid>
+                                                ))}
+                                            </Grid>
+                                        )}
+                                    </Grid>
+                                ))}
+                            </Grid>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleCloseDialog}>Fechar</Button>
+                            <Grid container justifyContent="center" spacing={2}>
+                                <Grid item>
+                                    <Button variant="contained" onClick={() => navigate(`/Player?linkAula=${encodeURI(linkAula)}`)}>Voltar Ao Video</Button>
+                                </Grid>
+                                <Grid item>
+                                    <Button variant="contained" onClick={() => navigate('/MeuPerfil')}>Meus Videos</Button>
+                                </Grid>
+                            </Grid>
                         </DialogActions>
                     </Dialog>
                 </Grid>

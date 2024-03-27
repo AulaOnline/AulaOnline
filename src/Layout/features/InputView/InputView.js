@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import "./style.css"; // Importe o arquivo de estilo
 import { ExtrairTkenEretornarID } from "../globalFunctions/pegarusername";
 import axios from "axios";
+import {API_URL} from "../../../App";
 
 function InputView() {
   const [linkAula, SetLinkAula] = useState('');
@@ -20,7 +21,7 @@ function InputView() {
     try {
       const id = await ExtrairTkenEretornarID();
       if (id) {
-        const response = await axios.post(`http://localhost:3001/video/postNewVideo/${id}`, {
+        const response = await axios.post(`${API_URL}/video/postNewVideo/${id}`, {
           video_link: linkAula
         });
         console.log('Novo vídeo postado:', response.data);

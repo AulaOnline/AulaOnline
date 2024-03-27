@@ -45,7 +45,7 @@ export default function MeuPerfilPC() {
       if (id) {
         const fetchVideos = async () => {
           try {
-            const response = await axios.get(`${URL}/video/getVideosOfUser/${id}`);
+            const response = await axios.get(`${API_URL}/video/getVideosOfUser/${id}`);
             console.log(response.data);
             setVideos(response.data.data)
           }
