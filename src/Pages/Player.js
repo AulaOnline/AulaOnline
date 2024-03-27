@@ -39,7 +39,7 @@ function VideoAndChat() {
                     try {
                         const response = await axios.post(`${API_URL}/annotation/postNewNotation/${id}`,{
                             "title": "Anotacao Sobre o Video",
-                            "body": "body",
+                            "body": body,
                             "videoLink": linkAula
                         });
                     }
