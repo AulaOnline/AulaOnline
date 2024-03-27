@@ -74,7 +74,7 @@ function VideoAndChat() {
             }
             {!loading && (
 
-                <Grid container sx={{ minHeight: 'calc(90vh)', paddingLeft: '40px', paddingTop: '50px', paddingBottom: '0px' }}>
+                <Grid container sx={{ minHeight: 'calc(90vh)', paddingLeft: '40px', paddingTop: '50px' }}>
                     <Grid item xs={12} md={8} sx={{ display: 'flex', height: "calc(65vh)", justifyContent: 'center', alignItems: 'center' }}>
                         <ReactPlayer url={linkAula}
                             width='100%'
@@ -82,38 +82,44 @@ function VideoAndChat() {
                             controls={true}
                         />
                     </Grid>
-                    <Grid item xs={12} md={3} sx={{ minHeight: "calc(65vh)", marginLeft: '20px' }}>
+                    <Grid item xs={12} md={3.75} sx={{marginLeft: '20px' }}>
                         <Editor />
                     </Grid>
-                    { 
-                        getResumo && (
-                        <Grid item xs={12} md={8} sx={{ padding: '20px' }}>
-                        <Box
-                            sx={{
-                                overflowY: 'auto',
-                                bgcolor: 'background.paper',
-                                border: '2px solid #000',
-                                boxShadow: 24,
-                                p: 4,
-                            }}
-                        >
-
-                            <Typography>{resumo}</Typography>
-                        </Box>
-                    </Grid>
-                    )}
-
-                    <Grid container xs={12} md={4} sx={{padding:'20px'}}>
-                        <Grid item md={6}> 
-
-                        <Button variant="contained"  sx={{ height: '40%', width: '100%', marginRight: '30px', backgroundColor: '#0CA789'}} onClick={() => navigate(`/questionario?linkAula=${encodeURI(linkAula)}`)}>
+                    <Grid container xs={12} md={3} sx={{height: "5.5vh",paddingTop:"20px"}}>
+                        <Grid item md={6}>
+                        <Button variant="contained"  sx={{ width: '80%', height:"100%", backgroundColor: '#0CA789'}} onClick={() => navigate(`/questionario?linkAula=${encodeURI(linkAula)}`)}>
                             Gerar Questionario</Button>
                         </Grid>
-                        <Grid item md={6}> 
-
-                        <Button variant="contained" sx={{  height: '40%', width: '100%', backgroundColor: '#9a8c1c' }} onClick={handleGerarResumo} disabled={disabled}>Gerar Resumo</Button>
+                        <Grid item md={6}>
+                        <Button variant="contained" sx={{ width: '80%',height:"100%",backgroundColor: '#0886b4'}} onClick={handleGerarResumo} disabled={disabled}>Gerar Resumo</Button>
                         </Grid>
                     </Grid>
+                    {
+                        getResumo && (
+                            <Grid container sx={{paddingBottom: "20vh", paddingTop:"2vh"}}>
+                            <Grid item xs={12} md={12}>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        overflowY: 'auto',
+                                        bgcolor: 'background.paper',
+                                        border: '5px solid #0886b4',
+                                        boxShadow: 24,
+                                        p: 4,
+                                        width:"65%",
+                                        borderRadius: '7px',
+                                        backgroundColor: '#19202a',
+                                        color: 'white'
+                                    }}
+                                >
+                                    <Typography fontSize={18}>{resumo}</Typography>
+                                </Box>
+                            </Grid>
+                            </Grid>
+
+                        )}
                 </Grid >
             )
             }
@@ -130,7 +136,6 @@ function Player() {
     useEffect(() => {
         // Verifica se há um token no localStorage
         const token = localStorage.getItem('token');
-        console.log('Token:', token);
         if (token) {
             // Faz uma requisição para verificar se o token é válido
             axios.post(`${API_URL}/login/verificar-token`, { token }, {

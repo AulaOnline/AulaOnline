@@ -1,63 +1,31 @@
-import React from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import style from "./style.css";
-const RichTextEditor = () => {
-    const modules = {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ indent: '-1' }, { indent: '+1' }],
-            ['link', 'image'],
-        ],
-    };
+import "./style.css";
+import React from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
 
-    const formats = [
-        'header',
-        'bold',
-        'italic',
-        'underline',
-        'strike',
-        'blockquote',
-        'list',
-        'bullet',
-        'indent',
-        'link',
-        'image',
-    ];
+export default class Editor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { editorHtml: "", theme: "snow" };
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-    const handleEditorContentChange = (content) => {
-        console.log('content: ', content);
-        localStorage.setItem('content', content);
-    };
+    handleChange(html) {
+        this.setState({ editorHtml: html });
+    }
 
-    return (
-            <div className="text-editor" style={{ height: '100%', overflow: 'hidden', backgroundColor: '#1E1E1E' }}>
+    render() {
+        return (
+            <div style={{ backgroundColor: "#f5f5f5"}}>
                 <ReactQuill
-                    modules={modules}
-                    formats={formats}
-                    onChange={handleEditorContentChange}
-                    placeholder="Anotar..."
-                    style={{
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        color: '#D4D4D4',
-                    }}
-                >
-                    <div
-                        className="my-editing-area"
-                        style={{
-                            flex: 1,
-                            overflowY: 'auto',
-                            backgroundColor: '#D4D4D4',
-                            color: 'black',
-                        }}
-                    />
-                </ReactQuill>
+                    theme={this.state.theme}
+                    onChange={this.handleChange}
+                    value={this.state.editorHtml}
+                    style={{ height: "65vh", backgroundColor: "#f5f5f5" }}
+                />
             </div>
-    );
-};
+        );
+    }
+}
 
-export default RichTextEditor;
